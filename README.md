@@ -22,7 +22,7 @@ If you want to help us improve our API, please fork the repo and follow these st
 1. Visit [our Issues](https://github.com/Cool-Kids-Coding/Pomodoro/issues) page to check if an issue exists and does not yet have an assignee. Assign yourself to the issue if you find what you are planning to solve.
 2. Clone on your local device. The link can be found under the code drop-down at the base of your fork (`git clone https://github.com/Cool-Kids-Coding/Pomodoro`)
 3. If you are adding a resource, please skip to step 6.
-4. Create a new branch for your username (`git checkout -b <username>`)
+4. Create a new branch for your username (`git branch <username>`)
 5. Switch to the branch you are working on (`git checkout <username>`)
 6. **Make your changes, commit after every isolated task.**
 7. Add all of your changes (`git add <file name here>` or `git add .`). Do not push any changes to dependencies unless the Issue calls for it.
