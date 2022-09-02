@@ -5,7 +5,9 @@
 	gap: 1rem;
 }
 input {
-	height: 50%;
+	height: 25%;
+	margin-block:auto;
+	width:70%;
 }
 .submit-btn {
 	height: 100%;
