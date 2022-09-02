@@ -9,24 +9,26 @@
 	<body>
 		<h1>Sign Up!</h1>
 		<form action="/signup" method="POST">
-			<ul>
-				<li>
-					<h3>UserName:</h3>
+			<ul class="signup__list">
+				<li class="signup__listitem">
+					<h3 class="signup__subheading">UserName:</h3>
 					<input type="text" name="userName" />
 				</li>
-				<li>
-					<h3>Email:</h3>
+				<li class="signup__listitem">
+					<h3 class="signup__subheading">Email:</h3>
 					<input type="email" name="email" />
 				</li>
-				<li>
-					<h3>Password:</h3>
+				<li class="signup__listitem">
+					<h3 class="signup__subheading">Password:</h3>
 					<input type="password" name="password" />
 				</li>
-				<li>
-					<h3>Confirm Password:</h3>
+				<li class="signup__listitem">
+					<h3 class="signup__subheading">Confirm Password:</h3>
 					<input type="password" name="confirmPassword" />
 				</li>
-				<li><input type="submit" value="Confirm Signup" /></li>
+				<li class="signup__listitem">
+					<input type="submit" value="Confirm Signup" />
+				</li>
 			</ul>
 		</form>
 	</body>
