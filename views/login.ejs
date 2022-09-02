@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Promodoro Login</title>
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -17,10 +18,21 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
+    <h1>Login!</h1>
     <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
+      <ul class="login__listitems">
+        <li class="login__listitem">
+					<h3 class="login__subheading">Email:</h3>
+					<input type="email" name="email" placeholder="Email"/>
+				</li>
+        <li class="login__listitem">
+					<h3 class="login__subheading">Password:</h3>
+					<input type="password" name="password" placeholder="Password"/>
+				</li>
+        <li class="login__listitem">
+				  <input class="submit-btn login-btn" type="submit" value="Confirm Login" />
+        </li>
+      </ul>
     </form>
 </body>
 </html>
