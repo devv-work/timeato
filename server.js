@@ -40,7 +40,7 @@ app.use(passport.session())
 app.use(flash())
 
 app.use('/', mainRoutes)
-app.use('/todos', todoRoutes)
+app.use('/timetracker', timeTrackerRoutes)
 
 app.listen(process.env.PORT || 2121, () => {
   console.log('Server is running, you better catch it!')
