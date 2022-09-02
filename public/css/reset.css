@@ -1,12 +1,19 @@
-h1{
-    color: red;
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
 }
-.completed{
-    text-decoration: line-through;
-    color: gray;
+
+h1 {
+  color: red;
 }
-.not{
-    text-decoration: underline;
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.not {
+  text-decoration: underline;
 }
 
 
@@ -16,9 +23,6 @@ h1{
 *::before,
 *::after {
   box-sizing: border-box;
-}
-html{
-    font-size:62.5%;
 }
 
 /* Remove default margin */
@@ -76,9 +80,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
