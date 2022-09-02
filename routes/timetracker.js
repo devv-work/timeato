@@ -4,7 +4,9 @@ const timeTrackerController = require('../controllers/timetracker')
 const { ensureAuth } = require('../middleware/auth')
 
 // Method names are arbitary
-router.get('/', timeTrackerController.getTime)
-router.post('/addTime', timeTrackerController.addTime)
-router.delete('/deleteTime', timeTrackerController.deleteTime)
+router.get('/', ensureAuth, timeTrackerController.getTime)
+router.post('/addTime', ensureAuth, timeTrackerController.addTime)
+router.delete('/deleteTime', ensureAuth, timeTrackerController.deleteTime)
+
+//export
 module.exports = router
