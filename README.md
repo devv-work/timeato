@@ -64,3 +64,7 @@ If you want to help us improve our API, please fork the repo and follow these st
     -   PORT: 2121 (can be any port example: 3000)
     -   DB_STRING: `your database URI`
     ***
+
+
+
+This is a TEST (Ingmar)
