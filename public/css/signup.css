@@ -1,0 +1,14 @@
+.signup__listitem {
+	display: grid;
+	grid-template-columns: 20% 40%;
+	padding-inline: 4rem;
+	gap: 1rem;
+}
+input {
+	height: 25%;
+	margin-block:auto;
+	width:70%;
+}
+.submit-btn {
+	height: 100%;
+}
