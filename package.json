@@ -1,7 +1,7 @@
 {
-  "name": "todo-mvc-auth-local",
+  "name": "pomodoro-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Timer app used to track productivity, alott time for focusing on tasks, and increase your effectiveness during study sessions.",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
