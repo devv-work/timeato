@@ -45,3 +45,5 @@ app.use('/todos', todoRoutes)
 app.listen(process.env.PORT || 2121, () => {
   console.log('Server is running, you better catch it!')
 })    
+
+test = "test"
