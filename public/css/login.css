@@ -12,3 +12,6 @@ input {
 .submit-btn {
 	height: 100%;
 }
+.login-btn {
+  width: 50%;
+}
