@@ -1,4 +1,4 @@
-const TaskList = require('../models/TaskList')
+const TaskList = require('../models/Task')
 
 module.exports = {
   getTime: (req, res) => {
