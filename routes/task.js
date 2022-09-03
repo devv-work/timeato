@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const taskController = require('../controllers/Task')
+const taskController = require('../controllers/task')
 const { ensureAuth } = require('../middleware/auth')
 
 // Method names are arbitary
