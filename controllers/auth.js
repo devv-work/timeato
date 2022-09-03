@@ -2,7 +2,6 @@ const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
 const TaskList = require('../models/TaskList')
-const Task = require('../models/Task')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -70,22 +69,7 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('../signup')
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  const taskList = new TaskList({
-    taskName: {
-              type: String,
-              default: 'study'
-          },
-          elapsedTime: {
-              type: Number,
-              min: 0,
-              default: 0,
-          },
-          totalSessions: {
-              type: Number,
-              min: 0,
-              default: 0,
-          }
-  })
+  const taskList = new TaskList()
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
