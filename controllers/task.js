@@ -2,7 +2,7 @@ const TaskList = require('../models/Task')
 
 module.exports = {
   getTime: (req, res) => {
-    console.log('getTime')
+    res.render('login')
   },
   addTime: (req, res) => {
     console.log('addTime')

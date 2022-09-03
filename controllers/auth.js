@@ -1,6 +1,8 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const TaskList = require('../models/TaskList')
+const Task = require('../models/Task')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -57,6 +59,7 @@ exports.getSignup = (req, res) => {
 }
 
 exports.postSignup = (req, res, next) => {
+  // Validators
   const validationErrors = []
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
   if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
@@ -67,11 +70,27 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('../signup')
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-
+  const taskList = new TaskList({
+    taskName: {
+              type: String,
+              default: 'study'
+          },
+          elapsedTime: {
+              type: Number,
+              min: 0,
+              default: 0,
+          },
+          totalSessions: {
+              type: Number,
+              min: 0,
+              default: 0,
+          }
+  })
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    taskList: taskList,
   })
 
   User.findOne({
@@ -85,6 +104,9 @@ exports.postSignup = (req, res, next) => {
       req.flash('errors', { msg: 'Account with that email address or username already exists.' })
       return res.redirect('../signup')
     }
+    taskList.save((err) => {
+      if (err) { return next(err) }
+      })
     user.save((err) => {
       if (err) { return next(err) }
       req.logIn(user, (err) => {
