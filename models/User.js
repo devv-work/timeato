@@ -1,16 +1,31 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
+// temporary variable, may delete later
+const TaskList = require('../models/TaskList')
 
 const UserSchema = new mongoose.Schema({
-  userName: { type: String, unique: true },
-  email: { type: String, unique: true },
-  password: String
+  userName: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  taskList: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'TaskList'
+  }
 })
 
-
 // Password hash middleware.
- 
- UserSchema.pre('save', function save(next) {
+UserSchema.pre('save', function save(next) {
   const user = this
   if (!user.isModified('password')) { return next() }
   bcrypt.genSalt(10, (err, salt) => {
@@ -25,7 +40,6 @@ const UserSchema = new mongoose.Schema({
 
 
 // Helper method for validating user's password.
-
 UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)
