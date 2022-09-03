@@ -2,7 +2,7 @@ const TaskList = require('../models/TaskList')
 
 module.exports = {
   getTime: (req, res) => {
-    res.render('pomorodor')
+    res.render('pomodoro')
   },
   addTime: (req, res) => {
     console.log('addTime')
@@ -11,3 +11,4 @@ module.exports = {
     console.log('deleteTime')
   },
 }    
+// test
