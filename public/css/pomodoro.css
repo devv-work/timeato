@@ -1,6 +1,19 @@
+/* Lightest Green: #90c1ac
+Lighter Green: #6fb89b
+Light Green: #45ad84
+Green: #28966b
+Medium Green: #257866
+Dark Green: #184f42 */
+
 * {
 
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
+
+}
+
+body {
+
+  background-color: #28966b;
 
 }
 
@@ -14,6 +27,7 @@
   margin: auto;
   text-align: center;
   font-size: 5rem;
+  color: white;
 }
 
 .pomodoro__timer {
@@ -28,5 +42,31 @@
 .timeSelect {
 
   padding-inline: 1rem;
+
+}
+
+.pomodoro__list {
+
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  padding-block: 0.5rem;
+
+}
+
+.pomodoro__list-item {
+
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid white;
+  color: white;
+
+}
+
+.pomodoro__cta {
+
+  font-size: 3rem;
+  color: white;
 
 }
