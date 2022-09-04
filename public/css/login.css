@@ -1,17 +1,36 @@
-.login__listitem {
+.login__form {
+  width: 30%;
+}
+
+.login__list {
 	display: grid;
-	grid-template-columns: 20% 40%;
+  height: 100%;
+	grid-template-columns: 100%;
+  grid-template-rows: repeat(3, 100px);
 	padding-inline: 4rem;
-	gap: 1rem;
 }
+
+.login__listitem {
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+}
+
+.login__listitem input {
+  width: 80%;
+}
+
+.login__subheading {
+  margin-right: 2rem;
+  width: 22%;
+}
+
 input {
-	height: 25%;
 	margin-block:auto;
-	width:70%;
 }
-.submit-btn {
-	height: 100%;
-}
-.login-btn {
-  width: 50%;
+
+li {
+  list-style-type: none;
 }
