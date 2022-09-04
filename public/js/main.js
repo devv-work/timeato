@@ -10,31 +10,28 @@ class Timer {
 		// (this.tags = tagList);
 	}
 }
-let minutes = 20;
-let functionMinutes = minutes;
-const testTimer = new Timer(minutes);
-
+const testTimer = new Timer(0);
 function handleTimer() {
+	testTimer.startTime = parseInt(document.querySelector('#timeSelect').value)
 	timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
-	function decrementMinutes(inputStartTime) {
-		if (testTimer.startTime >= 0) {
-			if (testTimer.startTime >= 10) {
-				timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
-				testTimer.startTime -= 1;
-			} else {
-				timerDisplay.innerText =
-					'Minutes Left: 0' + testTimer.startTime;
-				testTimer.startTime -= 1;
-			}
-		} else {
-			timerDisplay.innerText = 'Minutes Left: 00';
-			return;
-		}
-	}
-	decrementMinutes();
-	if (testTimer.startTime >= 0) {
-		setInterval(() => decrementMinutes(20), 100);
-	}
-	testTimer.startTime = functionMinutes;
-	console.log(testTimer);
+	decrementMinutes(testTimer.startTime);
 }
+
+function decrementMinutes(inputTime) {
+	console.log(testTimer);
+	if (inputTime > 0) {
+		if (inputTime >= 10) {
+			timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
+			testTimer.startTime -= 1;
+			setTimeout(decrementMinutes, 1000);
+		} else {
+			timerDisplay.innerText = 'Minutes Left: 0' + testTimer.startTime;
+			testTimer.startTime -= 1;
+			setTimeout(decrementMinutes, 10);
+		}
+	} else {
+		timerDisplay.innerText = 'Minutes Left: 00';
+		return;
+	}
+}
+
