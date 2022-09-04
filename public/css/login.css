@@ -76,6 +76,10 @@ hr {
   text-decoration: none;
 }
 
+.signup__link:hover {
+  color: #184f42;
+}
+
 .password__min-len {
   font-size: 1.5rem;
   font-weight: 200;
