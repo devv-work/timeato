@@ -1,7 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
-const TaskList = require('../models/Tasklist')
+const TaskList = require('../models/TaskList')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
