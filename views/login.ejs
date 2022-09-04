@@ -21,6 +21,7 @@
 </head>
 <body>
   <img class="login__image" src="../assets/login-images/studying.jpg">
+
   <div class="login__form-container">
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
@@ -32,7 +33,7 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <h1>Login!</h1>
+    <h1>Login to Pomodoro</h1>
     <form class="login__form" action="/login" method="POST">
       <ul class="login__list">
         <li class="login__listitem">
