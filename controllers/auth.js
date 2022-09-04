@@ -1,7 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
-const TaskList = require('../models/TaskList')
+const TaskList = require('../models/Tasklist')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -58,7 +58,7 @@ exports.getSignup = (req, res) => {
 }
 
 exports.postSignup = (req, res, next) => {
-  // Validators
+  // Validators 
   const validationErrors = []
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
   if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
