@@ -40,6 +40,7 @@ exports.postLogin = (req, res, next) => {
 
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
+  req.user = null
     res.redirect('/')
   })
 }
