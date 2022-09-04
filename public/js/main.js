@@ -32,7 +32,8 @@ function decrementMinutes() {
 		}
 	} else {
 		timerDisplay.innerText = 'Minutes Left: 00';
-		return;
+		alert('FINISHED')
+		testTimer.startTime = parseInt(document.querySelector('#timeSelect').value)
 	}
 }
 
