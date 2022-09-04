@@ -1,17 +1,21 @@
-const timerElement = document.querySelector('.timerStartStop');
+// Start/Stop button
+const timerStartStopBtn = document.querySelector('.timerStartStop');
+// Event Listener for click
+timerStartStopBtn.addEventListener('click', handleTimer);
+// Display with 'Minutes Left: _____"
 const timerDisplay = document.querySelector('.timerDisplay');
-timerElement.addEventListener('click', handleTimer);
-
-let tagList = ['work', 'study'];
+// Defines a class for timer, if we want to add methods/properties in mongoDb our schema is 
 class Timer {
-	constructor(minutes) {
-		(this.startTime = minutes), (this.elapsedTime = 0);
-		// (this.breakTime = breakTime),
-		// (this.tags = tagList);
+	constructor() {
+		(this.startTime = 0), (this.elapsedTime = 0);
 	}
 }
-const testTimer = new Timer(20)
 
+// Creates a timer upon page load
+const testTimer = new Timer(0)
+// Grabs the selected time from dropdown, assigns it to startTime in our Timer. 
+// Updates 'Minutes Left: ___" with appropriate number
+// Calls decrementMinutes
 function handleTimer() {
 	testTimer.startTime = parseInt(document.querySelector('#timeSelect').value);
 	timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
