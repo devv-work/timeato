@@ -10,6 +10,12 @@ module.exports = {
   deleteTime: (req, res) => {
     console.log('deleteTime')
   },
+  addTask: (req, res) => {
+    try{
+      await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile})
+    }catch(err){
+      console.log(err)
+    }
+  }
 }   
 
-// test
