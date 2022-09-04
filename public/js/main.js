@@ -10,17 +10,21 @@ class Timer {
 		// (this.tags = tagList);
 	}
 }
-const testTimer = new Timer(0);
+const testTimer = new Timer(20)
+
+
+
+
 function handleTimer() {
-	testTimer.startTime = parseInt(document.querySelector('#timeSelect').value)
+	testTimer.startTime = parseInt(document.querySelector('#timeSelect').value);
 	timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
 	decrementMinutes(testTimer.startTime);
 }
 
-function decrementMinutes(inputTime) {
+function decrementMinutes() {
 	console.log(testTimer);
-	if (inputTime > 0) {
-		if (inputTime >= 10) {
+	if (testTimer.startTime > 0) {
+		if (testTimer.startTime  >= 10) {
 			timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
 			testTimer.startTime -= 1;
 			setTimeout(decrementMinutes, 1000);
