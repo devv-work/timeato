@@ -1,4 +1,4 @@
-const timerElement = document.querySelector('.timer');
+const timerElement = document.querySelector('.timerStartStop');
 const timerDisplay = document.querySelector('.timerDisplay');
 timerElement.addEventListener('click', handleTimer);
 
@@ -11,9 +11,6 @@ class Timer {
 	}
 }
 const testTimer = new Timer(20)
-
-
-
 
 function handleTimer() {
 	testTimer.startTime = parseInt(document.querySelector('#timeSelect').value);
