@@ -123,3 +123,26 @@ hr {
   top: -0.35rem;
   box-shadow: 0 .7rem #257866;
 }
+
+/* 
+============== Media Queries ==============
+*/
+
+@media all and (max-width: 1125px) {
+  .login__image {
+    display: none;
+  }
+}
+
+@media all and (max-width: 600px) {
+
+  .login__input,
+  .login__btn,
+  .login__title {
+    min-width: 35rem;
+  }
+
+  hr {
+    width: 35rem;
+  }
+}
