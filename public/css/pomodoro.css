@@ -1,0 +1,32 @@
+* {
+
+  outline: 1px solid black;
+
+}
+
+.wrapper {
+  width: 50%;
+  margin: auto;
+}
+
+.pomodoro__title {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 5rem;
+}
+
+.pomodoro__timer {
+
+  font-size: 3rem;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+
+}
+
+.timeSelect {
+
+  padding-inline: 1rem;
+
+}

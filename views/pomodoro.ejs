@@ -1,80 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Pomodoro Timer</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/pomodoro.css">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pomodoro Timer</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/pomodoro.css" />
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/favicon.jpg" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Pomodoro time -->
+            <nav class="primary-nav">
+                <button>Logout</button>
+            </nav>
+            <div class="container">
+                <h1 class="pomodoro__title">Pomodoro</h1>
+                <section class="pomodoro__timer">
+                  <span class="pomodoro__cta">Choose a time:</span>
+                  <select name="membership" id="timeSelect" class="timeSelect">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="25" selected>25</option>
+                      <option value="30">30</option>
+                  </select>
+                  <h2 class="timerDisplay">Minutes Left: 00</h2>
+                  <button class="timerStartStop">Start/Stop</button>
+                </section>
+                <section class="inner__container">
+                    <span class="pomodoro__cta">Choose a time:</span>
+                    <ul class="pomodoro__list">
+                        <li class="pomodoro__list-item">25 mins</li>
+                        <li class="pomodoro__list-item">5 mins</li>
+                    </ul>
+                </section>
 
-    <!-- Favicon -->
-    <link rel="icon" href="./assets/favicon.jpg" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    
-    <!-- Pomodoro time -->
-    <nav>
-        <button>Logout</button>
-    </nav>
-    
-    <div>
-        <h1>Pomodoro</h1>
+                <section class="inner__container">
+                    <span class="pomodoro__cta">Tag your time:</span>
+                    <ul class="pomodoro__list">
+                        <li class="pomodoro__list-item">Work</li>
+                        <li class="pomodoro__list-item">Study</li>
+                    </ul>
+                </section>
+                <button class="pomodoro__start-button">Start/Stop</button>
+                <p class="pomodoro__description">
+                    See how you've been spending your time below
+                </p>
+            </div>
         
-        <span>TIMER</span>
 
-        <span>Choose a time:</span>
+  <!-- Stats Breakdown
+    <div class="breakdown-container">
 
-        <ul>
-            <li>25 mins</li>
-            <li>5 mins</li>
-        </ul>
-
-        <span>Tag your time:</span>
-        <ul>
-            <li>Work</li>
-            <li>Study</li>
-        </ul>
-
-        <button>Start/Stop</button>
-
-        <p>See how you've been spending your time below</p>
-    </div>
-
-    <!-- Stats Breakdown -->
-    <div>
-
+      <section class="innercontainer">
         <h2>Today's Breakdown</h2>
         <ul>
             <li>Tag: Time</li>
             <li>Tag 2: Time</li>
         </ul>
+      </section>
 
-        <h2>This Week's Breakdown</h2>
+      <section class="innercontainer">
+        <h2>This week's Breakdown</h2>
         <ul>
             <li>Tag: Time</li>
             <li>Tag 2: Time</li>
         </ul>
+      </section>
 
 
-        <h2>This Month's Breakdown</h2>
+      <section class="inner__container">
+        <h2>This month's Breakdown</h2>
         <ul>
             <li>Tag: Time</li>
             <li>Tag 2: Time</li>
         </ul>
-        
+      </section>
+
     </div>
 
-    <a href="/logout">Logout</a>
+    <a href="/logout">Logout</a> -->
+  </div>
 
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
