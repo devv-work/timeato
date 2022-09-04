@@ -51,7 +51,7 @@ hr {
 }
 
 /* Form Container (right-side of layout) */
-.login__form-container {
+.login__text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,12 +59,27 @@ hr {
   width: 100%;
 }
 
+.login__form-container {
+  margin-block: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__header {
+  padding: 2.5rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login__logo {
+  width: 4rem;
+}
+
 .signup__redirect {
-  position: absolute;
-
-  top: 4rem;
-  right: 4rem;
-
   font-size: 1.3rem;
   font-weight: 300;
 }
@@ -120,6 +135,7 @@ hr {
   border: none;
   box-shadow: 0 0.35rem #257866;
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .login__btn:hover {
