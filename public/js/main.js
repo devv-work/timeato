@@ -10,3 +10,21 @@ class Timer {
 		// (this.tags = tagList);
 	}
 }
+function handleTimer() {
+	let minutes = 20;
+	// let breakTime = prompt('How long are breaks?')
+	const testTimer = new Timer(minutes);
+	timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
+	function decrementMinutes() {
+		if (testTimer.startTime >= 0) {
+			timerDisplay.innerText = 'Minutes Left: ' + testTimer.startTime;
+			testTimer.startTime -= 1;
+		} else {
+			timerDisplay.innerText = 'Minutes Left: 0';
+			return;
+		}
+	}
+	decrementMinutes();
+	setInterval(decrementMinutes, 1000);
+	console.log(testTimer);
+}
