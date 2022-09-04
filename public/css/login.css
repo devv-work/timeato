@@ -16,11 +16,6 @@ ul {
 ============== Layout Styles ==============
 */
 
-/* body {
-  display: grid;
-  grid-template-columns: 0.75fr 1fr;
-} */
-
 body {
   display: flex;
   color: #0d0c22;
@@ -33,6 +28,7 @@ hr {
 
 .login__subheading {
   margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .login__btn {
@@ -63,6 +59,28 @@ hr {
   width: 100%;
 }
 
+.signup__redirect {
+  position: absolute;
+
+  top: 4rem;
+  right: 4rem;
+
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.signup__link {
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #28966b;
+  text-decoration: none;
+}
+
+.password__min-len {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
 .login__subheading {
   font-size: 1.5rem;
   font-weight: 400;
@@ -84,6 +102,7 @@ hr {
   border: none;
   background: #f3f3f4;
   padding: .8rem;
+  padding-left: 1.5rem;
   font-size: 1.2rem;
 }
 

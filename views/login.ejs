@@ -23,6 +23,7 @@
   <img class="login__image" src="../assets/login-images/studying.jpg">
 
   <div class="login__form-container">
+    <h2 class="signup__redirect">Not a user? <a class="signup__link" href="/signup">Sign up now</a></h2>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -42,7 +43,7 @@
 					<input class="login__input" type="email" name="email" placeholder="Email"/>
 				</li>
         <li class="login__listitem">
-					<h3 class="login__subheading">Password:</h3>
+					<h3 class="login__subheading">Password <span class="password__min-len">(8 character min.)</span>:</h3>
 					<input class="login__input" type="password" name="password" placeholder="Password"/>
 				</li>
         <li class="submit__listitem">
