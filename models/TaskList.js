@@ -28,8 +28,8 @@ const TaskSchema = new mongoose.Schema({
 
 const SessionSchema = new mongoose.Schema({
   date:{
-    type: String,
-    default: "no date provides",
+    type: Date,
+    default: Date.now(),
   },
   todaysFocusTime:{
     type: Number,
@@ -50,6 +50,7 @@ const SessionSchema = new mongoose.Schema({
     default: 0,
   }
 })
+
 const CycleSchema = new mongoose.Schema({
   focusTime:{
     type: Number,
