@@ -13,6 +13,7 @@ class Timer {
 
 // Creates a timer upon page load
 const testTimer = new Timer(0)
+
 // Grabs the selected time from dropdown, assigns it to startTime in our Timer. 
 // Updates 'Minutes Left: ___" with appropriate number
 // Calls decrementMinutes
@@ -22,6 +23,10 @@ function handleTimer() {
 	decrementMinutes(testTimer.startTime);
 }
 
+// Might pull apart this function into smaller ones, but essentially it checks for the current time remaining, 
+//	if it is >=10 it will append it to the 'Minutes Left:' normally,
+//	  if it is <10 it will add a leading 0 (so it is always two digits like a clock), 
+//		  finally if it is 0 it will alert 'FINISHED' and redeclare testTimer.startTime to stop the loop.
 function decrementMinutes() {
 	console.log(testTimer);
 	if (testTimer.startTime > 0) {
