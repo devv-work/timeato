@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<title>Pomodoro Sign Up</title>
-
-		<!-- Stylesheets -->
-		<link rel="stylesheet" href="/css/reset.css">
-		<link rel="stylesheet" href="/css/signup.css">
-
-		<!-- Favicon -->
-		<link rel="icon" href="./assets/favicon.jpg" />
-
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<h1 class="signup__title">Sign Up!</h1>
-		<form action="/signup" method="POST">
-			<ul class="signup__list">
-				<li class="signup__listitem">
-					<h3 class="signup__subheading">UserName:</h3>
-					<input type="text" name="userName" />
-				</li>
-				<li class="signup__listitem">
-					<h3 class="signup__subheading">Email:</h3>
-					<input type="email" name="email" />
-				</li>
-				<li class="signup__listitem">
-					<h3 class="signup__subheading">Password:</h3>
-					<input type="password" name="password" />
-				</li>
-				<li class="signup__listitem">
-					<h3 class="signup__subheading">Confirm Password:</h3>
-					<input type="password" name="confirmPassword" />
-				</li>
-				<li class="signup__listitem">
-					<input class="submit-btn" type="submit" value="Confirm Signup" />
-				</li>
-			</ul>
-		</form>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Sign Up</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/signup.css">
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/favicon.jpg">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img class="signup__image" src="../assets/signup-images/library.jpg">
+        <div class="signup__text-container">
+            <header class="signup__header">
+                <img class="signup__logo" src="../assets/logo.png">
+                <h2 class="login__redirect">
+                    Already a user?
+                    <a class="login__link" href="/login">Login now</a>
+                </h2>
+            </header>
+            <div class="signup__form-container">
+                <h1 class="signup__title">Sign Up with Pomodoro</h1>
+                <hr>
+                <form action="/signup" method="POST">
+                    <ul class="signup__list">
+                        <li class="signup__listitem">
+                            <h3 class="signup__subheading">UserName:</h3>
+                            <input class="signup__input" type="text" name="userName">
+                        </li>
+                        <li class="signup__listitem">
+                            <h3 class="signup__subheading">Email:</h3>
+                            <input class="signup__input" type="email" name="email">
+                        </li>
+                        <li class="signup__listitem">
+                            <h3 class="signup__subheading">
+                                Password
+                                <span class="password__min-len">(8 character min.)</span>
+                                :
+                            </h3>
+                            <input class="signup__input" type="password" name="password">
+                        </li>
+                        <li class="signup__listitem">
+                            <h3 class="signup__subheading">Confirm Password:</h3>
+                            <input class="signup__input" type="password" name="confirmPassword">
+                        </li>
+                        <li class="signup__listitem">
+                            <input class="signup__btn" type="submit" value="Signup">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
