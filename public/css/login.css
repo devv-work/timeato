@@ -1,36 +1,29 @@
-.login__form {
-  width: 30%;
+/* 
+============== Base Styles ==============
+*/
+
+ul {
+  list-style: none;
 }
 
-.login__list {
-	display: grid;
-  height: 100%;
-	grid-template-columns: 100%;
-  grid-template-rows: repeat(3, 100px);
-	padding-inline: 4rem;
+/* 
+============== Layout Styles ==============
+*/
+
+body {
+  display: grid;
+  grid-template-columns: 0.75fr 1fr;
 }
 
-.login__listitem {
+/* 
+============== Additional Styles ==============
+*/
 
-  display: flex;
-  align-items: center;
-  width: 100%;
-
+.login__image {
+  height: 100vh;
+  object-fit: cover;
 }
 
-.login__listitem input {
-  width: 80%;
-}
-
-.login__subheading {
-  margin-right: 2rem;
-  width: 22%;
-}
-
-input {
-	margin-block:auto;
-}
-
-li {
-  list-style-type: none;
+.login__form-container {
+  margin-block: auto;
 }

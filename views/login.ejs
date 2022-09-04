@@ -20,6 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <img class="login__image" src="../assets/login-images/studying.jpg">
+  <div class="login__form-container">
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -46,5 +48,6 @@
         </li>
       </ul>
     </form>
+  </div>
 </body>
 </html>
