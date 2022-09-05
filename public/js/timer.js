@@ -20,6 +20,7 @@ function setTime() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
+	timerObject.elapsedTime = 0;
 	let duration = 60 * timerObject.focusTime;
 	const [minutes, seconds] = calculateTimer(duration);
 	displayTimer(minutes, seconds);
