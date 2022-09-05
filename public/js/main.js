@@ -52,7 +52,7 @@ function startTimer(duration) {
 }
 
 // Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
-function calculateTimer(timer, minutes, seconds, display) {
+function calculateTimer(timer, minutes, seconds) {
 	minutes = parseInt(timer / 60, 10);
 	seconds = parseInt(timer % 60, 10);
 	minutes = minutes < 10 ? '0' + minutes : minutes;
