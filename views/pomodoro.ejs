@@ -1,68 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Pomodoro Timer</title>
-		<!-- Stylesheets -->
-		<link rel="stylesheet" href="css/reset.css" />
-		<link rel="stylesheet" href="css/pomodoro.css" />
-		<!-- Favicon -->
-		<link rel="icon" href="./assets/favicon.jpg" />
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E" />
-		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body>
-		<img class="background" src="../assets/pomodoro-images/fogforest.jpg" />
-		<div class="wrapper">
-			<!-- Pomodoro time -->
-			<nav class="primary-nav">
-				<h2 class="positivity">Success is the sum of small efforts!</h2>
-				<a href="/logout" class="logout__btn">Logout</a>
-			</nav>
-			<div class="container">
-				<header class="header__container">
-					<h1 class="pomodoro__title">Pomodoro</h1>
-					<section class="pomodoro__timer">
-						<span class="pomodoro__cta">Choose a time:</span>
-						<select
-							name="membership"
-							id="timeSelect"
-							class="timeSelect"
-						>
-							<option value="5">5</option>
-							<option value="10">10</option>
-							<option value="25" selected>25</option>
-							<option value="30">30</option>
-						</select>
-						<h2 class="timerDisplay">00:00</h2>
-						<button class="timerStartStop">Start/Stop</button>
-					</section>
-				</header>
-				<section class="inner__container">
-					<h3 class="pomodoro__cta">
-						What would you like to work on?
-					</h3>
-					<ul class="pomodoro__list">
-						<li class="pomodoro__list-item">Study</li>
-						<li class="pomodoro__list-item">Banki</li>
-						<li class="pomodoro__list-item">Coding</li>
-						<li class="pomodoro__list-item">Job Search</li>
-					</ul>
-				</section>
-			</div>
-			<!-- Stats Breakdown
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Timer</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/pomodoro.css">
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/favicon.jpg">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <img class="background" src="../assets/pomodoro-images/fogforest.jpg">
+        <div class="wrapper">
+            <!-- Pomodoro time -->
+            <nav class="primary-nav">
+                <h2 class="positivity">Success is the sum of small efforts!</h2>
+                <a href="/logout" class="logout__btn">Logout</a>
+            </nav>
+            <div class="container">
+                <header class="header__container">
+                    <h1 class="pomodoro__title">Pomodoro</h1>
+                    <section class="pomodoro__timer">
+                        <span class="pomodoro__cta">Choose a time:</span>
+                        <select name="membership" id="timeSelect" class="timeSelect">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="30">30</option>
+                        </select>
+                        <h2 class="timerDisplay">00:00</h2>
+                        <button class="timerStartStop">Start/Stop</button>
+                    </section>
+                </header>
+                <section class="inner__container">
+                    <h3 class="pomodoro__cta">What would you like to work on?</h3>
+                    <ul class="pomodoro__list">
+                        <li class="pomodoro__list-item">Study</li>
+                        <li class="pomodoro__list-item">Banki</li>
+                        <li class="pomodoro__list-item">Coding</li>
+                        <li class="pomodoro__list-item">Job Search</li>
+                    </ul>
+                </section>
+            </div>
+            <!-- Stats Breakdown
     <p class="pomodoro__description">
       See how you've been spending your time below
     </p>
     <div class="breakdown-container">
-
       <section class="innercontainer">
         <h2>Today's Breakdown</h2>
         <ul>
@@ -70,7 +60,6 @@
             <li>Tag 2: Time</li>
         </ul>
       </section>
-
       <section class="innercontainer">
         <h2>This week's Breakdown</h2>
         <ul>
@@ -78,8 +67,6 @@
             <li>Tag 2: Time</li>
         </ul>
       </section>
-
-
       <section class="inner__container">
         <h2>This month's Breakdown</h2>
         <ul>
@@ -87,9 +74,7 @@
             <li>Tag 2: Time</li>
         </ul>
       </section>
-
     </div>
-
     <a href="/logout">Logout</a> -->
 		</div>
 		<script src="js/main.js"></script>
