@@ -2,6 +2,9 @@ const timerStartStopBtn = document.querySelector('.timerStartStop');
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
+
+timeSelect.addEventListener('change', setTime);
+
 const listItems = document.querySelectorAll('.pomodoro__list-item')
 
 // adds event listeners to all items in the pomodoro__list
@@ -11,6 +14,7 @@ listItems.forEach(listItem => {
 
 })
 
+
 const timerObject = {
 	focusTime: 0,
 	breakTime: 0,
@@ -18,9 +22,20 @@ const timerObject = {
 	active: false,
 	taskName: null,
 	totalSessions: 0,
+	elapsedTime: 0,
 	sessionInfo: [],
 	date: formatDate(),
 };
+
+function setTime() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.elapsedTime = 0;
+	let duration = 60 * timerObject.focusTime;
+	const [minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+}
 
 /**
  * Name: handleStartButtonClick()
@@ -29,15 +44,16 @@ const timerObject = {
  */
 function handleStartButtonClick() {
 	// timerObject.taskName = document.querySelector('#taskName').value;
-	// !!! ^ This will need to be refactored to accept button clicks on our tag options, was originally a text input.
-	// Assigns the current timer duration to timerObject
-	timerObject.focusTime = parseInt(
-		document.querySelector('#timeSelect').value
-	);
-	// Convert the minutes selected to seconds
-	let duration = 60 * timerObject.focusTime;
-	// Pass seconds into startTimer
-	startTimer(duration);
+	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	if (timerObject.active === false) {
+		console.log('Starting Timer');
+		handleTimer(duration);
+		timerObject.active = true;
+	} else {
+		console.log('Stopping Timer');
+		handleTimer(duration, false);
+		timerObject.active = false;
+	}
 }
 
 /**
@@ -45,15 +61,21 @@ function handleStartButtonClick() {
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-function startTimer(duration) {
+
+function handleTimer(duration) {
 	const intervalId = setInterval(function () {
+		timerObject.elapsedTime = timerObject.elapsedTime + 1;
+		console.log(timerObject.elapsedTime);
 		const [minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
-			stopTimer(intervalId);
+			clearInterval(intervalId);
 			updateTimerObject();
 		}
-	}, 1); // <- Interval in ms
+		if (timerObject.active === false) {
+			clearInterval(intervalId);
+		}
+	}, 1000); // <- Interval in ms
 }
 
 /**
@@ -128,3 +150,4 @@ function setTagName(e) {
   timerObject.taskName = e.target.innerText;
 
 }
+
