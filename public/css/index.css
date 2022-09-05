@@ -76,3 +76,41 @@ body {
     top: -0.3rem;
     box-shadow: 0 .7rem #bbbbbb;
 }
+
+@media all and (max-width: 1375px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media all and (max-width: 1110px) {
+    html {
+        font-size: 40%;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .text__container {
+        margin-inline: 20rem;
+    }
+}
+
+@media all and (max-width: 825px) {
+    .background {
+        display: none;
+    }
+
+    body {
+        background: #28966b;
+    }
+
+    .text__container {
+        margin: 0;
+        border: none;
+    }
+
+    .index__container {
+        justify-content: flex-start;
+        margin-top: 20rem;
+    }
+}
