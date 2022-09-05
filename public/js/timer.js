@@ -36,11 +36,11 @@ function handleStartButtonClick() {
 	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
-		startTimer(duration);
+		handleTimer(duration);
 		timerObject.active = true;
 	} else {
 		console.log('Stopping Timer');
-		startTimer(duration, false);
+		handleTimer(duration, false);
 		timerObject.active = false;
 	}
 }
@@ -51,7 +51,7 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 
-function startTimer(duration) {
+function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
