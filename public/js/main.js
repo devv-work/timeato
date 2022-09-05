@@ -49,3 +49,37 @@ function handleStartButtonClick() {
 		display = document.querySelector('.timerDisplay');
 	startTimer(time, display);
 }
+function formatDom() {
+	if (timerObject.focusTime > 0) {
+		if (timerObject.focusTime >= 10) {
+			timerDisplay.innerText = 'Minutes Left: ' + timerObject.focusTime;
+		} else {
+			timerDisplay.innerText = 'Minutes Left: 0' + timerObject.focusTime;
+		}
+	} else {
+		timerDisplay.innerText = 'Minutes Left: 00';
+	}
+}
+// Adds information from most recent session to TimerObject, currently adds information correctly.
+function updateTimerObject() {
+	// +1 to Session
+	timerObject.totalSessions += 1;
+	// Every 4 rounds get a 15 minute break
+	timerObject.totalSessions % 4 === 0
+		? (timerObject.breakTime = 15)
+		: (timerObject.breakTime = 5);
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.totalFocusTime += timerObject.focusTime;
+	// Pushes sessionInfo
+	// {taskName:
+	//  focusTime:
+	//  breakTime:
+	// 	}
+	timerObject.sessionInfo.push({
+		taskName: timerObject.taskName,
+		focusTime: timerObject.focusTime,
+		breakTime: timerObject.breakTime,
+	});
+}
