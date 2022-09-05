@@ -15,11 +15,12 @@ const timerObject = {
 	sessionInfo: [],
 	date: formatDate(),
 };
-
+const favIcon = document.getElementsByTagName("link")[2]
 function setTime() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
+	timerObject.elapsedTime = 0;
 	let duration = 60 * timerObject.focusTime;
 	const [minutes, seconds] = calculateTimer(duration);
 	displayTimer(minutes, seconds);
@@ -62,8 +63,11 @@ function startTimer(duration) {
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
+			favIcon.href = "./assets/favicon.jpg"
 		}
 	}, 1000); // <- Interval in ms
+	console.log(favIcon.href)
+	favIcon.href = "./assets/favicon-timerstarted.jpg"
 }
 
 /**
@@ -93,6 +97,7 @@ function displayTimer(minutes, seconds) {
 // Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
+	favIcon.href = "./assets/favicon-timerstarted.jpg"
 }
 
 /**
