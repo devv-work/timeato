@@ -45,7 +45,7 @@ function startTimer(duration) {
 			stopTimer(intervalId);
 			updateTimerObject();
 		}
-	}, 1); // <- Interval in ms
+	}, 1000); // <- Interval in ms
 }
 
 /**
