@@ -95,6 +95,24 @@ hr {
 .signup__logo {
 	width: 4rem;
 }
+.signup__logo {
+	background-image: url('../assets/logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	background-size: 4rem;
+	width: 4rem;
+	height: 4rem;
+}
+.signup__logo:hover{
+	background-image: url('../assets/logo-hover.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	background-size: 4rem;
+	width: 4rem;
+	height: 4rem;
+}
 
 .login__redirect {
 	font-size: 1.3rem;
