@@ -14,7 +14,7 @@ class Timer {
 			(this.taskName = null),
 			(this.totalSessions = 0), // ---> amountOfSessions in DB
 			(this.sessionInfo = []);
-		this.date = dateHelper();
+		this.date = formatDate();
 	}
 }
 // Creates a new timer
@@ -45,10 +45,11 @@ function startTimer(duration) {
 			calculateTimer(timer, minutes, seconds)[1]
 		);
 		// If the timer value is === 0
-		if (--timer === 0) {
+		if (--timer < 0) {
 			stopTimer(intervalId);
+			updateTimerObject();
 		}
-	}, 1000);
+	}, 1);
 }
 
 // Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
@@ -69,8 +70,6 @@ function displayTimer(minutes, seconds) {
 // Stops the timer, updates the object with this session's information.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
-	updateTimerObject();
-	console.log(timerObject);
 }
 
 // Adds information from most recent session to TimerObject, currently adds information correctly.
@@ -81,10 +80,6 @@ function updateTimerObject() {
 	timerObject.totalSessions % 4 === 0
 		? (timerObject.breakTime = 15)
 		: (timerObject.breakTime = 5);
-	// Redeclare the focusTime
-	timerObject.focusTime = parseInt(
-		document.querySelector('#timeSelect').value
-	);
 	// Accumulate totalFocusTime
 	timerObject.totalFocusTime += timerObject.focusTime;
 	// Store data about this session in our object
@@ -93,16 +88,11 @@ function updateTimerObject() {
 		focusTime: timerObject.focusTime,
 		breakTime: timerObject.breakTime,
 	});
-}
-
-// Decrements focusTime and increments totalFocusTime
-function updateTimerFocus() {
-	timerObject.focusTime -= 1;
-	timerObject.totalFocusTime += 1;
+	console.log(timerObject);
 }
 
 // Converts Date() to mm/dd/yyyy format
-function dateHelper() {
+function formatDate() {
 	const today = new Date();
 	const yyyy = today.getFullYear();
 	let mm = today.getMonth() + 1; // Months start at 0!
