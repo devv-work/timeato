@@ -49,7 +49,7 @@ function startTimer(duration) {
 			stopTimer(intervalId);
 			updateTimerObject();
 		}
-	}, 1);
+	}, 1000);
 }
 
 // Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
