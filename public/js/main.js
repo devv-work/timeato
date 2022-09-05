@@ -1,11 +1,8 @@
-// Start/Stop button
 const timerStartStopBtn = document.querySelector('.timerStartStop');
-// Event Listener for click
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
-// Display with 'Minutes Left: _____"
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
-// Defines class for Timer
+
 const timerObject = {
 	focusTime: 0,
 	breakTime: 0,
@@ -17,9 +14,11 @@ const timerObject = {
 	date: formatDate(),
 };
 
-// Creates a new timer
-
-// Starts the timer, also calls on displayTimer to update DOM upon run.
+/**
+ * Name: handleStartButtonClick()
+ * Description: On button click, assigns focusTime, declares duration of timer, and start timer
+ *
+ */
 function handleStartButtonClick() {
 	// timerObject.taskName = document.querySelector('#taskName').value;
 	// !!! ^ This will need to be refactored to accept button clicks on our tag options, was originally a text input.
@@ -33,45 +32,57 @@ function handleStartButtonClick() {
 	startTimer(duration);
 }
 
+/**
+ * Name: startTimer
+ * Description: Run's setTimeout interval and displays time changes to DOM
+ * @param duration - specifies the amount of time for each setTimeout iteration
+ */
 function startTimer(duration) {
-	let timer = duration,
-		minutes,
-		seconds;
-	// Most complicated part, on an interval of 1000ms, display to the DOM the result of calculateTimer. Updates on the interval given so at 1000ms it will calculate the timer value and update DOM every second.
 	const intervalId = setInterval(function () {
-		displayTimer(
-			calculateTimer(timer, minutes, seconds)[0],
-			calculateTimer(timer, minutes, seconds)[1]
-		);
-		// If the timer value is === 0
-		if (--timer < 0) {
+		const [minutes, seconds] = calculateTimer(duration);
+		displayTimer(minutes, seconds);
+		if (--duration < 0) {
 			stopTimer(intervalId);
 			updateTimerObject();
 		}
-	}, 1);
+	}, 1000); // <- Interval in ms
 }
 
-// Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
-function calculateTimer(timer, minutes, seconds) {
-	minutes = parseInt(timer / 60, 10);
-	seconds = parseInt(timer % 60, 10);
+/**
+ * Name: calculateTimer
+ * Description: Performs operations on timer variable and returns an array of [minutes, seconds]
+ * @param timer- amount of time, in seconds
+ */
+function calculateTimer(timer) {
+	let minutes = parseInt(timer / 60, 10);
+	let seconds = parseInt(timer % 60, 10);
 	minutes = minutes < 10 ? '0' + minutes : minutes;
 	seconds = seconds < 10 ? '0' + seconds : seconds;
 	return [minutes, seconds];
 }
 
-// Loads timer information onto the DOM, passed in as indexes from an array.
+/**
+ * Name: displayTimer
+ * Description: Updates DOM with time, updated every interval in startTimer()
+ * @param minutes
+ * @param seconds
+ */
 function displayTimer(minutes, seconds) {
 	const display = document.querySelector('.timerDisplay');
 	display.innerText = minutes + ':' + seconds;
 }
 
-// Stops the timer, updates the object with this session's information.
+// Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
 }
 
-// Adds information from most recent session to TimerObject, currently adds information correctly.
+/**
+ * Name: displayTimer
+ * Description: // Adds information from most recent session to TimerObject
+ *
+ */
+
 function updateTimerObject() {
 	// +1 to Session
 	timerObject.totalSessions += 1;
