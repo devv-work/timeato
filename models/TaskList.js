@@ -1,8 +1,40 @@
 const mongoose = require('mongoose')
 
-const TaskListSchema = new mongoose.Schema({
-  taskList: {
-    type: [TaskSchema],
+const CycleSchema = new mongoose.Schema({
+  focusTime: {
+    type: Number,
+    min: 0,
+    default: 0,
+  },
+  breakTime: {
+    type: Number,
+    min: 0,
+    default: 0,
+  }
+})
+
+const SessionSchema = new mongoose.Schema({
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+  todaysFocusTime: {
+    type: Number,
+    min: 0,
+    default: 0,
+  },
+  todaysBreakTime: {
+    type: Number,
+    min: 0,
+    default: 0,
+  },
+  sessionInfo: {
+    type: [CycleSchema]
+  },
+  amountOfCycles: {
+    type: Number,
+    min: 0,
+    default: 0,
   }
 })
 
@@ -21,49 +53,15 @@ const TaskSchema = new mongoose.Schema({
     min: 0,
     default: 0,
   },
-  sessions:{
+  sessions: {
     type: [SessionSchema]
   }
 })
 
-const SessionSchema = new mongoose.Schema({
-  date:{
-    type: Date,
-    default: Date.now(),
-  },
-  todaysFocusTime:{
-    type: Number,
-    min: 0,
-    default: 0,
-  },
-  todaysBreakTime:{
-    type: Number,
-    min: 0,
-    default: 0, 
-  },
-  sessionInfo:{
-    type: [CycleSchema]
-  },
-  amountOfCycles:{
-    type: Number,
-    min: 0,
-    default: 0,
+const TaskListSchema = new mongoose.Schema({
+  taskList: {
+    type: [TaskSchema],
   }
 })
-
-const CycleSchema = new mongoose.Schema({
-  focusTime:{
-    type: Number,
-    min: 0,
-    default: 0, 
-  },
-  breakTime:{
-    type: Number,
-    min: 0,
-    default: 0, 
-  }
-})
-
-
 
 module.exports = mongoose.model('TaskList', TaskListSchema)
