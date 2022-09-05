@@ -5,7 +5,6 @@ timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 // Display with 'Minutes Left: _____"
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
-
 // Defines class for Timer
 class Timer {
 	constructor() {
@@ -18,48 +17,62 @@ class Timer {
 		this.date = dateHelper();
 	}
 }
-
 // Creates a new timer
 const timerObject = new Timer();
 
-function startTimer(duration, display) {
-	let timer = duration,
-		minutes,
-		seconds;
-	const intervalId = setInterval(function () {
-		minutes = parseInt(timer / 60, 10);
-		seconds = parseInt(timer % 60, 10);
-		minutes = minutes < 10 ? '0' + minutes : minutes;
-		seconds = seconds < 10 ? '0' + seconds : seconds;
-		display.innerText = minutes + ':' + seconds;
-		if (--timer < 0) {
-			clearInterval(intervalId);
-			updateTimerObject();
-			console.log(timerObject);
-		}
-	}, 1000);
-}
+// Starts the timer, also calls on displayTimer to update DOM upon run.
 function handleStartButtonClick() {
 	// timerObject.taskName = document.querySelector('#taskName').value;
+	// !!! ^ This will need to be refactored to accept button clicks on our tag options, was originally a text input.
+	// Assigns the current timer duration to timerObject
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
-	// timerObject.active ? isCountingDown(false) : isCountingDown(true);
-	var time = 60 * document.querySelector('#timeSelect').value,
-		display = document.querySelector('.timerDisplay');
-	startTimer(time, display);
+	// Convert the minutes selected to seconds
+	let duration = 60 * timerObject.focusTime;
+	// Pass seconds into startTimer
+	startTimer(duration);
 }
-function formatDom() {
-	if (timerObject.focusTime > 0) {
-		if (timerObject.focusTime >= 10) {
-			timerDisplay.innerText = 'Minutes Left: ' + timerObject.focusTime;
-		} else {
-			timerDisplay.innerText = 'Minutes Left: 0' + timerObject.focusTime;
+
+function startTimer(duration) {
+	let timer = duration,
+		minutes,
+		seconds;
+	// Most complicated part, on an interval of 1000ms, display to the DOM the result of calculateTimer. Updates on the interval given so at 1000ms it will calculate the timer value and update DOM every second.
+	const intervalId = setInterval(function () {
+		displayTimer(
+			calculateTimer(timer, minutes, seconds)[0],
+			calculateTimer(timer, minutes, seconds)[1]
+		);
+		// If the timer value is === 0
+		if (--timer === 0) {
+			stopTimer(intervalId);
 		}
-	} else {
-		timerDisplay.innerText = 'Minutes Left: 00';
-	}
+	}, 1000);
 }
+
+// Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
+function calculateTimer(timer, minutes, seconds, display) {
+	minutes = parseInt(timer / 60, 10);
+	seconds = parseInt(timer % 60, 10);
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	seconds = seconds < 10 ? '0' + seconds : seconds;
+	return [minutes, seconds];
+}
+
+// Loads timer information onto the DOM, passed in as indexes from an array.
+function displayTimer(minutes, seconds) {
+	const display = document.querySelector('.timerDisplay');
+	display.innerText = minutes + ':' + seconds;
+}
+
+// Stops the timer, updates the object with this session's information.
+function stopTimer(intervalId) {
+	clearInterval(intervalId);
+	updateTimerObject();
+	console.log(timerObject);
+}
+
 // Adds information from most recent session to TimerObject, currently adds information correctly.
 function updateTimerObject() {
 	// +1 to Session
@@ -68,27 +81,27 @@ function updateTimerObject() {
 	timerObject.totalSessions % 4 === 0
 		? (timerObject.breakTime = 15)
 		: (timerObject.breakTime = 5);
+	// Redeclare the focusTime
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
+	// Accumulate totalFocusTime
 	timerObject.totalFocusTime += timerObject.focusTime;
-	// Pushes sessionInfo
-	// {taskName:
-	//  focusTime:
-	//  breakTime:
-	// 	}
+	// Store data about this session in our object
 	timerObject.sessionInfo.push({
 		taskName: timerObject.taskName,
 		focusTime: timerObject.focusTime,
 		breakTime: timerObject.breakTime,
 	});
 }
+
 // Decrements focusTime and increments totalFocusTime
 function updateTimerFocus() {
 	timerObject.focusTime -= 1;
 	timerObject.totalFocusTime += 1;
 }
-// Converts Date.now() to mm/dd/yyyy format
+
+// Converts Date() to mm/dd/yyyy format
 function dateHelper() {
 	const today = new Date();
 	const yyyy = today.getFullYear();
