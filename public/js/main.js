@@ -21,3 +21,31 @@ class Timer {
 
 // Creates a new timer
 const timerObject = new Timer();
+
+function startTimer(duration, display) {
+	let timer = duration,
+		minutes,
+		seconds;
+	const intervalId = setInterval(function () {
+		minutes = parseInt(timer / 60, 10);
+		seconds = parseInt(timer % 60, 10);
+		minutes = minutes < 10 ? '0' + minutes : minutes;
+		seconds = seconds < 10 ? '0' + seconds : seconds;
+		display.innerText = minutes + ':' + seconds;
+		if (--timer < 0) {
+			clearInterval(intervalId);
+			updateTimerObject();
+			console.log(timerObject);
+		}
+	}, 1000);
+}
+function handleStartButtonClick() {
+	// timerObject.taskName = document.querySelector('#taskName').value;
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	// timerObject.active ? isCountingDown(false) : isCountingDown(true);
+	var time = 60 * document.querySelector('#timeSelect').value,
+		display = document.querySelector('.timerDisplay');
+	startTimer(time, display);
+}
