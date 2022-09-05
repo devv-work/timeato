@@ -130,3 +130,4 @@ function formatDate() {
 	const formattedToday = mm + '/' + dd + '/' + yyyy;
 	return formattedToday;
 }
+// Test
