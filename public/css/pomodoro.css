@@ -186,3 +186,13 @@ ul {
   top: -0.35rem;
   box-shadow: 0 .7rem #bbbbbb;
 }
+
+@media all and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+
+  .wrapper {
+    width: 350px;
+  }
+}
