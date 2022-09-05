@@ -6,19 +6,18 @@ timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
 // Defines class for Timer
-class Timer {
-	constructor() {
-		(this.focusTime = 0),
-			(this.breakTime = 0),
-			(this.totalFocusTime = 0), //---> timeSpent in DB && totalFocusTime
-			(this.active = false)((this.taskName = null)),
-			(this.totalSessions = 0), // ---> amountOfSessions in DB
-			(this.sessionInfo = []);
-		this.date = formatDate();
-	}
-}
+const timerObject = {
+	focusTime: 0,
+	breakTime: 0,
+	totalFocusTime: 0,
+	active: false,
+	taskName: null,
+	totalSessions: 0,
+	sessionInfo: [],
+	date: formatDate(),
+};
+
 // Creates a new timer
-const timerObject = new Timer();
 
 // Starts the timer, also calls on displayTimer to update DOM upon run.
 function handleStartButtonClick() {
@@ -49,7 +48,7 @@ function startTimer(duration) {
 			stopTimer(intervalId);
 			updateTimerObject();
 		}
-	}, 1000);
+	}, 1);
 }
 
 // Helper function to calculate the specific minutes/seconds of the timer, returns an array used in displayTimer.
