@@ -68,8 +68,10 @@ function calculateTimer(timer) {
  * @param seconds
  */
 function displayTimer(minutes, seconds) {
-	const display = document.querySelector('.timerDisplay');
-	display.innerText = minutes + ':' + seconds;
+	const minutesDisplay = document.querySelector('.minutes');
+	const secondsDisplay = document.querySelector('.seconds');
+	minutesDisplay.innerText = minutes;
+	secondsDisplay.innerText = seconds;
 }
 
 // Stops the timer.
