@@ -11,7 +11,7 @@ class Timer {
 		(this.focusTime = 0),
 			(this.breakTime = 0),
 			(this.totalFocusTime = 0), //---> timeSpent in DB && totalFocusTime
-			(this.taskName = null),
+			(this.active = false)((this.taskName = null)),
 			(this.totalSessions = 0), // ---> amountOfSessions in DB
 			(this.sessionInfo = []);
 		this.date = formatDate();
