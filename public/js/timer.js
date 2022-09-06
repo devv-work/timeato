@@ -138,7 +138,7 @@ document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
 async function addTask() {
 
 	try {
-		const response = await fetch('task/addTask', {
+		const response = await fetch('task/updateTask', {
 			method: 'put',
 			headers: { 'Content-type': 'application/json' },
 			body: JSON.stringify({
