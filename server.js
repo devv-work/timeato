@@ -44,7 +44,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/task', taskRoutes)
 
-const port = `0.0.0.0:${PORT}`
-app.listen( port || 2121, () => {
+
+app.listen( 0.0.0.0:$PORT || 2121, () => {
   console.log('Server is running, you better catch it!')
 })    
