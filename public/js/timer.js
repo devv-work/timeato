@@ -6,6 +6,7 @@ const timeSelect = document.querySelector('#timeSelect');
 timeSelect.addEventListener('change', setTime);
 
 const listItems = document.querySelectorAll('.pomodoro__list-item');
+listItem.addEventListener('click', setTagName)
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
@@ -17,7 +18,7 @@ const timerObject = {
 	breakTime: 0,
 	totalFocusTime: 0,
 	active: false,
-	taskName: null,
+	taskName: 'general',
 	totalSessions: 0,
 	elapsedTime: 0,
 	sessionInfo: [],
@@ -64,12 +65,12 @@ function handleStartButtonClick() {
 }
 
 /**
- * Name: startTimer
+ * Name: handleTimer
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-
 function handleTimer(duration) {
+  updateTask();
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
@@ -160,4 +161,39 @@ function formatDate() {
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
 	timerObject.taskName = e.target.innerText;
+}
+
+// ########################## addTask Controller fetch #######################################
+
+// On click of the start/stop button, run addTask
+document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
+
+// Send the timer object to the addTask controller through a json
+async function updateTask() {
+
+	try {
+		const response = await fetch('task/updateTask', {
+			method: 'put',
+			headers: { 'Content-type': 'application/json' },
+			body: JSON.stringify({
+
+				// TaskSchema: taskName
+				'taskName': timerObject.taskName,
+
+				// SessionSchema: date
+				'date': timerObject.date,
+
+				// CycleSchema: focusTime
+				'focusTime': timerObject.focusTime,
+
+				// CycleSchema: breakTime
+				'breakTime': timerObject.breakTime,
+			})
+		})
+		const data = await response.json()
+		console.log(data)
+		location.reload()
+	} catch (err) {
+		console.log(err)
+	}
 }
