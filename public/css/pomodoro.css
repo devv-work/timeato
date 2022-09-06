@@ -110,8 +110,8 @@ ul {
 	padding-inline: auto;
 	margin-block: 2rem;
 
-	border-radius: 0.5rem;
 
+	border-radius: 0.5rem;
 	background: rgba(12, 41, 34, 0.25);
 	box-shadow: 0 8px 100px #90c1ac;
 	backdrop-filter: blur(4px);
@@ -153,6 +153,14 @@ ul {
 	border: 2px solid white;
 	color: white;
 	font-size: 1.5rem;
+	cursor: pointer;
+	-webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+
 }
 
 .pomodoro__cta {
@@ -180,6 +188,11 @@ ul {
 	cursor: pointer;
 	top: -0.35rem;
 	box-shadow: 0 0.7rem #bbbbbb;
+}
+
+.active{
+  background: #124237;
+
 }
 
 @media all and (max-width: 600px) {

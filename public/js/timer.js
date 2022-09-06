@@ -7,6 +7,7 @@ timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', stopTimer);
 
 const listItems = document.querySelectorAll('.pomodoro__list-item');
+listItem.addEventListener('click', setTagName)
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
@@ -21,12 +22,22 @@ const timerObject = {
 	breakTime: 0,
 	totalFocusTime: 0,
 	active: false,
-	taskName: null,
+	taskName: 'general',
 	totalSessions: 0,
 	elapsedTime: 0,
 	sessionInfo: [],
 	date: formatDate(),
 };
+const favIcon = document.getElementsByTagName('link')[2];
+function setTime() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.elapsedTime = 0;
+	let duration = 60 * timerObject.focusTime;
+	const [minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+}
 
 function setTime() {
 	timerObject.focusTime = parseInt(
@@ -65,12 +76,12 @@ function handleStartButtonClick() {
 }
 
 /**
- * Name: startTimer
+ * Name: handleTimer
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-
 function handleTimer(duration) {
+  updateTask();
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
@@ -82,8 +93,12 @@ function handleTimer(duration) {
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
+
+			favIcon.href = './assets/favicon.jpg';
 		}
 	}, 1000); // <- Interval in ms
+	console.log(favIcon.href);
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -114,6 +129,7 @@ function displayTimer(minutes, seconds) {
 // Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -156,4 +172,39 @@ function formatDate() {
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
 	timerObject.taskName = e.target.innerText;
+}
+
+// ########################## addTask Controller fetch #######################################
+
+// On click of the start/stop button, run addTask
+document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
+
+// Send the timer object to the addTask controller through a json
+async function updateTask() {
+
+	try {
+		const response = await fetch('task/updateTask', {
+			method: 'put',
+			headers: { 'Content-type': 'application/json' },
+			body: JSON.stringify({
+
+				// TaskSchema: taskName
+				'taskName': timerObject.taskName,
+
+				// SessionSchema: date
+				'date': timerObject.date,
+
+				// CycleSchema: focusTime
+				'focusTime': timerObject.focusTime,
+
+				// CycleSchema: breakTime
+				'breakTime': timerObject.breakTime,
+			})
+		})
+		const data = await response.json()
+		console.log(data)
+		location.reload()
+	} catch (err) {
+		console.log(err)
+	}
 }
