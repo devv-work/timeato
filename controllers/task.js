@@ -11,9 +11,6 @@ module.exports = {
   deleteTime: (req, res) => {
     console.log('deleteTime')
   },
-  addTask: async (req, res) => {
-    console.log(req)
-  },
   updateTask: async (req, res) => {
     try {
       // Find the user
