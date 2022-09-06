@@ -46,7 +46,7 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 function startTimer(duration) {
-	addTask();
+	updateTask();
 	const intervalId = setInterval(function () {
 		const [minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
@@ -136,7 +136,7 @@ function setTagName(e) {
 document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
 
 // Send the timer object to the addTask controller through a json
-async function addTask() {
+async function updateTask() {
 
 	try {
 		const response = await fetch('task/updateTask', {
