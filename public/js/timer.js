@@ -5,15 +5,12 @@ const timeSelect = document.querySelector('#timeSelect');
 
 timeSelect.addEventListener('change', setTime);
 
-const listItems = document.querySelectorAll('.pomodoro__list-item')
+const listItems = document.querySelectorAll('.pomodoro__list-item');
 
 // adds event listeners to all items in the pomodoro__list
-listItems.forEach(listItem => {
-
-  listItem.addEventListener('click', setTagName)
-
-})
-
+listItems.forEach((listItem) => {
+	listItem.addEventListener('click', setTagName);
+});
 
 const timerObject = {
 	focusTime: 0,
@@ -99,6 +96,7 @@ function calculateTimer(timer) {
  */
 function displayTimer(minutes, seconds) {
 	const display = document.querySelector('.timerDisplay');
+	document.title = minutes + ':' + seconds;
 	display.innerText = minutes + ':' + seconds;
 }
 
@@ -146,8 +144,5 @@ function formatDate() {
 // retrieves the text inside the list item that was clicked on
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
-
-  timerObject.taskName = e.target.innerText;
-
+	timerObject.taskName = e.target.innerText;
 }
-
