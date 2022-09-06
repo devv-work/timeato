@@ -5,18 +5,12 @@ const timeSelect = document.querySelector('#timeSelect');
 
 timeSelect.addEventListener('change', setTime);
 
-const listItems = document.querySelectorAll('.pomodoro__list-item')
-
-
-timeSelect.addEventListener('change', setTime);
-
 const listItems = document.querySelectorAll('.pomodoro__list-item');
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
 });
-
 
 const timerObject = {
 	focusTime: 0,
@@ -29,7 +23,7 @@ const timerObject = {
 	sessionInfo: [],
 	date: formatDate(),
 };
-const favIcon = document.getElementsByTagName("link")[2]
+const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
@@ -75,7 +69,6 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 
-
 function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
@@ -89,11 +82,11 @@ function handleTimer(duration) {
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
 
-			favIcon.href = "./assets/favicon.jpg"
+			favIcon.href = './assets/favicon.jpg';
 		}
 	}, 1000); // <- Interval in ms
-	console.log(favIcon.href)
-	favIcon.href = "./assets/favicon-timerstarted.jpg"
+	console.log(favIcon.href);
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -124,7 +117,7 @@ function displayTimer(minutes, seconds) {
 // Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
-	favIcon.href = "./assets/favicon-timerstarted.jpg"
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -166,6 +159,5 @@ function formatDate() {
 // retrieves the text inside the list item that was clicked on
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
-  timerObject.taskName = e.target.innerText;
-  }
-
+	timerObject.taskName = e.target.innerText;
+}
