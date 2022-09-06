@@ -4,6 +4,7 @@ const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
 
 timeSelect.addEventListener('change', setTime);
+timeSelect.addEventListener('change', stopTimer);
 
 const listItems = document.querySelectorAll('.pomodoro__list-item');
 listItem.addEventListener('click', setTagName)
@@ -13,6 +14,9 @@ listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
 });
 
+let [minutes, seconds] = calculateTimer(1500);
+displayTimer(minutes, seconds);
+let duration = 1500;
 const timerObject = {
 	focusTime: 0,
 	breakTime: 0,
@@ -40,7 +44,7 @@ function setTime() {
 		document.querySelector('#timeSelect').value
 	);
 	timerObject.elapsedTime = 0;
-	let duration = 60 * timerObject.focusTime;
+	duration = 60 * timerObject.focusTime;
 	const [minutes, seconds] = calculateTimer(duration);
 	displayTimer(minutes, seconds);
 }
@@ -50,9 +54,16 @@ function setTime() {
  * Description: On button click, assigns focusTime, declares duration of timer, and start timer
  *
  */
+
 function handleStartButtonClick() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
 	// timerObject.taskName = document.querySelector('#taskName').value;
-	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	if (duration < 0) {
+		setTime();
+	}
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
 		handleTimer(duration);
@@ -74,7 +85,7 @@ function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
-		const [minutes, seconds] = calculateTimer(duration);
+		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
 			clearInterval(intervalId);
