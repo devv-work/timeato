@@ -12,6 +12,10 @@ listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
 });
 
+let [minutes, seconds] = calculateTimer(1500);
+console.log(minutes, seconds);
+displayTimer(minutes, seconds);
+
 const timerObject = {
 	focusTime: 0,
 	breakTime: 0,
@@ -63,7 +67,7 @@ function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
-		const [minutes, seconds] = calculateTimer(duration);
+		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
 			clearInterval(intervalId);
