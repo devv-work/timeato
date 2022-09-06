@@ -11,7 +11,7 @@ module.exports = {
     console.log('deleteTime')
   },
   addTask: async (req, res) => {
-    try{
+    // try{
       // Will need to update this with the information we need to add to the new task object
       
       // user: user document
@@ -78,9 +78,9 @@ module.exports = {
         // Save changes in db
         taskList.save((err) => console.error(err))
 
-    }catch(err){
-      console.log(err)
+    // }catch(err){
+    //   console.log(err)
     }
   }
-}   
+// }   
 
