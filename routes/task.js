@@ -9,7 +9,7 @@ router.post('/addTime', ensureAuth, taskController.addTime)
 router.delete('/deleteTime', ensureAuth, taskController.deleteTime)
 
 // Route to adding a new task object to the user 
-router.post('/addTask', ensureAuth, taskController.addTask)
+// router.post('/addTask', ensureAuth, taskController.addTask)
 router.put('/updateTask', ensureAuth, taskController.updateTask)
 
 
