@@ -29,7 +29,7 @@ module.exports = {
         totalFocusTime,
         totalSessions,
         sessions
-       } = taskList.taskArray
+       } = currentTask
 
       //  Destructuring sessions
        let {
