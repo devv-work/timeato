@@ -1,6 +1,6 @@
-# Introduction
+# Timeato
 
-# For Team
+## Introduction
 
 ## Folder Structure
 
