@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
-const { TaskSchema } = require('./Task').schema
+// temporary variable, may delete later
+const TaskList = require('../models/TaskList')
 
 const UserSchema = new mongoose.Schema({
   userName: {
@@ -17,9 +18,9 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  taskArray: {
-    type: [TaskSchema],
-    required: true
+  taskList: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'TaskList'
   }
 })
 

@@ -58,4 +58,10 @@ const TaskSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Task', TaskSchema)
+const TaskListSchema = new mongoose.Schema({
+  taskList: {
+    type: [TaskSchema],
+  }
+})
+
+module.exports = mongoose.model('TaskList', TaskListSchema)
