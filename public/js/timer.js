@@ -16,7 +16,7 @@ const timerObject = {
 	breakTime: 0,
 	totalFocusTime: 0,
 	active: false,
-	taskName: null,
+	taskName: 'general',
 	totalSessions: 0,
 	sessionInfo: [],
 	date: formatDate(),
