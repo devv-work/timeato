@@ -18,15 +18,11 @@ module.exports = {
     try {
       // Find the user
       const user = await User.find({ _id: req.user.id })
-      // Find the users taskList
-
-      console.log(user.taskListId)
-      const taskList = await TaskList.find({ _id: user.taskListId })
-
-      console.log({ user, taskList })
+      // access taskArray property
+      const { taskArray } = user
 
       // Search to see if a task exists with the taskName passed through the request
-      const currentTask = taskList.taskArray.find((task) => task.taskName === req.body.taskName)
+      const currentTask = taskArray.find((task) => task.taskName === req.body.taskName)
 
       // If the task doesnt exists redirect to /addTask and add the new task to the taskArray
       if (currentTask === undefined) {
@@ -36,7 +32,7 @@ module.exports = {
 
 
       // Save changes in db
-      taskList.save((err) => console.error(err))
+      user.save((err) => console.error(err))
     } catch (err) {
       console.error(err)
     }
