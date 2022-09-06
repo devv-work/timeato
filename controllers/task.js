@@ -40,7 +40,7 @@ module.exports = {
             }
           ]
         })
-      } else { // update the task
+      } else { // if the task did exist update the task
         // grab properties from the current task
         const { totalFocusTime, totalSessions, sessions } = currentTask
         // update the property values
