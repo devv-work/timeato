@@ -128,3 +128,38 @@ function setTagName(e) {
   timerObject.taskName = e.target.innerText;
 
 }
+
+// ########################## addTask Controller fetch #######################################
+
+// On click of the start/stop button, run addTask
+document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
+
+// Send the timer object to the addTask controller through a json
+async function addTask(){
+        
+    try{
+        const response = await fetch('task/addTask', {
+            method: 'put',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+				
+				// TaskSchema: taskName
+				'taskName': timerObject.taskName,
+				
+				// SessionSchema: date
+				'date': timerObject.date,
+				
+				// CycleSchema: focusTime
+				'focusTime': timerObject.focusTime,
+
+				// CycleSchema: breakTime
+				'breakTime': timerObject.breakTime,
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}

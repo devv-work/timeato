@@ -13,7 +13,11 @@ module.exports = {
   addTask: async (req, res) => {
     try{
       // Will need to update this with the information we need to add to the new task object
-      await Todo.findOneAndUpdate()
+      
+      const user = await User.find({ _id: req.body.id })
+      const { taskArray } = await TaskList.find({ _id: user.taskListId })
+
+      taskArray
 
       // TaskListSchema: TaskSchema
       // TaskSchema: taskName

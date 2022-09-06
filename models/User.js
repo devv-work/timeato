@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  taskList: {
+  taskListId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TaskList'
   }

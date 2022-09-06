@@ -59,7 +59,7 @@ const TaskSchema = new mongoose.Schema({
 })
 
 const TaskListSchema = new mongoose.Schema({
-  taskList: {
+  taskArray: {
     type: [TaskSchema],
   }
 })
