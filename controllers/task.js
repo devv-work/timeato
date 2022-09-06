@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const TaskList = require('../models/TaskList')
+const Task = require('../models/Task')
 
 module.exports = {
   getTime: (req, res) => {
