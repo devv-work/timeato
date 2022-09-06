@@ -75,6 +75,9 @@ module.exports = {
         // CycleSchema: breakTime
         breakTime = req.body.breakTime  
 
+        // Save changes in db
+        taskList.save((err) => console.error(err))
+
     }catch(err){
       console.log(err)
     }
