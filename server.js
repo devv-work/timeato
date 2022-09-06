@@ -45,4 +45,4 @@ app.use('/', mainRoutes)
 app.use('/task', taskRoutes)
 
 
-app.listen(0.0.0.0:$PORT)
+app.listen($PORT)
