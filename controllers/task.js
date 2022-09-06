@@ -19,7 +19,11 @@ module.exports = {
       // Find the user
       const user = await User.find({ _id: req.user.id })
       // Find the users taskList
+
+      console.log(user.taskListId)
       const taskList = await TaskList.find({ _id: user.taskListId })
+
+      console.log({ user, taskList })
 
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskList.taskArray.find((task) => task.taskName === req.body.taskName)
