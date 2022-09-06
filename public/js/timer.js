@@ -32,7 +32,6 @@ function setTime() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
-	console.log(timerObject.focusTime);
 	timerObject.elapsedTime = 0;
 	duration = 60 * timerObject.focusTime;
 	const [minutes, seconds] = calculateTimer(duration);
@@ -45,9 +44,11 @@ function setTime() {
  *
  */
 function handleStartButtonClick() {
-	setTime();
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
 	// timerObject.taskName = document.querySelector('#taskName').value;
-	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
 		handleTimer(duration);
