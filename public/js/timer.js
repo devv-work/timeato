@@ -43,12 +43,16 @@ function setTime() {
  * Description: On button click, assigns focusTime, declares duration of timer, and start timer
  *
  */
+ Wa5R1jY75vYC!
 function handleStartButtonClick() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
 	// timerObject.taskName = document.querySelector('#taskName').value;
 	duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	if (duration < 0) {
+		setTime();
+	}
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
 		handleTimer(duration);
@@ -79,7 +83,7 @@ function handleTimer(duration) {
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
 		}
-	}, 1000); // <- Interval in ms
+	}, 1); // <- Interval in ms
 }
 
 /**
