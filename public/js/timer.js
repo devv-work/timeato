@@ -2,15 +2,14 @@ const timerStartStopBtn = document.querySelector('.timerStartStop');
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
-
-timeSelect.addEventListener('change', setTime);
-
-const listItems = document.querySelectorAll('.pomodoro__list-item');
+const listItems = document.querySelectorAll('.pomodoro__list-item')
 
 // adds event listeners to all items in the pomodoro__list
-listItems.forEach((listItem) => {
-	listItem.addEventListener('click', setTagName);
-});
+listItems.forEach(listItem => {
+
+	listItem.addEventListener('click', setTagName)
+
+})
 
 const timerObject = {
 	focusTime: 0,
@@ -19,20 +18,9 @@ const timerObject = {
 	active: false,
 	taskName: null,
 	totalSessions: 0,
-	elapsedTime: 0,
 	sessionInfo: [],
 	date: formatDate(),
 };
-
-function setTime() {
-	timerObject.focusTime = parseInt(
-		document.querySelector('#timeSelect').value
-	);
-	timerObject.elapsedTime = 0;
-	let duration = 60 * timerObject.focusTime;
-	const [minutes, seconds] = calculateTimer(duration);
-	displayTimer(minutes, seconds);
-}
 
 /**
  * Name: handleStartButtonClick()
@@ -41,16 +29,15 @@ function setTime() {
  */
 function handleStartButtonClick() {
 	// timerObject.taskName = document.querySelector('#taskName').value;
-	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
-	if (timerObject.active === false) {
-		console.log('Starting Timer');
-		handleTimer(duration);
-		timerObject.active = true;
-	} else {
-		console.log('Stopping Timer');
-		handleTimer(duration, false);
-		timerObject.active = false;
-	}
+	// !!! ^ This will need to be refactored to accept button clicks on our tag options, was originally a text input.
+	// Assigns the current timer duration to timerObject
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	// Convert the minutes selected to seconds
+	let duration = 60 * timerObject.focusTime;
+	// Pass seconds into startTimer
+	startTimer(duration);
 }
 
 /**
@@ -58,21 +45,15 @@ function handleStartButtonClick() {
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-
-function handleTimer(duration) {
+function startTimer(duration) {
 	const intervalId = setInterval(function () {
-		timerObject.elapsedTime = timerObject.elapsedTime + 1;
-		console.log(timerObject.elapsedTime);
 		const [minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
-			clearInterval(intervalId);
+			stopTimer(intervalId);
 			updateTimerObject();
 		}
-		if (timerObject.active === false) {
-			clearInterval(intervalId);
-		}
-	}, 100); // <- Interval in ms
+	}, 1); // <- Interval in ms
 }
 
 /**
@@ -96,7 +77,6 @@ function calculateTimer(timer) {
  */
 function displayTimer(minutes, seconds) {
 	const display = document.querySelector('.timerDisplay');
-	document.title = minutes + ':' + seconds;
 	display.innerText = minutes + ':' + seconds;
 }
 
@@ -144,5 +124,42 @@ function formatDate() {
 // retrieves the text inside the list item that was clicked on
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
+
 	timerObject.taskName = e.target.innerText;
+
+}
+
+// ########################## addTask Controller fetch #######################################
+
+// On click of the start/stop button, run addTask
+document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
+
+// Send the timer object to the addTask controller through a json
+async function addTask() {
+
+	try {
+		const response = await fetch('task/addTask', {
+			method: 'put',
+			headers: { 'Content-type': 'application/json' },
+			body: JSON.stringify({
+
+				// TaskSchema: taskName
+				'taskName': timerObject.taskName,
+
+				// SessionSchema: date
+				'date': timerObject.date,
+
+				// CycleSchema: focusTime
+				'focusTime': timerObject.focusTime,
+
+				// CycleSchema: breakTime
+				'breakTime': timerObject.breakTime,
+			})
+		})
+		const data = await response.json()
+		console.log(data)
+		location.reload()
+	} catch (err) {
+		console.log(err)
+	}
 }

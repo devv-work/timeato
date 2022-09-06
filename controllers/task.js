@@ -12,6 +12,9 @@ module.exports = {
     console.log('deleteTime')
   },
   addTask: async (req, res) => {
+
+  },
+  updateTask: async (req, res) => {
     try {
       // Find the user
       const user = await User.find({ _id: req.user.id })
@@ -21,7 +24,10 @@ module.exports = {
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskList.taskArray.find((task) => task.taskName === req.body.taskName)
 
-
+      // If the task doesnt exists redirect to /addTask and add the new task to the taskArray
+      if (currentTask === undefined) {
+        res.redirect('/addTask')
+      }
 
       // Save changes in db
       taskList.save((err) => console.error(err))
