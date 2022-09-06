@@ -13,7 +13,6 @@ listItems.forEach((listItem) => {
 });
 
 let [minutes, seconds] = calculateTimer(1500);
-console.log(minutes, seconds);
 displayTimer(minutes, seconds);
 
 const timerObject = {
