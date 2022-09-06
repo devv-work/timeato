@@ -1,19 +1,21 @@
 # Timeato
+<img width="1440" alt="188342389-7fa669a1-e757-42da-b3c1-36146e0adacd" src="https://user-images.githubusercontent.com/77141303/188753629-4b6039e1-a8d6-4722-ade4-aa5419704969.png">
 
-## Introduction
 
-## Folder Structure
+### Introduction
 
-## Branch Structure
+### Folder Structure
+
+### Branch Structure
 
 Production (main) <br>
 &nbsp;|\_ Test
 
-## How to make a PR
+### How to make a PR
 
 If you want to help us improve our API, please fork the repo and follow these steps before creating a pull request.
 
-### First Work
+#### First Work
 
 1. Visit [our Issues](https://github.com/Cool-Kids-Coding/Pomodoro/issues) page to check if an issue exists and does not yet have an assignee. Assign yourself to the issue if you find what you are planning to solve.
 2. Clone on your local device. The link can be found under the code drop-down at the base of your fork (`git clone https://github.com/Cool-Kids-Coding/Pomodoro`)
@@ -26,7 +28,7 @@ If you want to help us improve our API, please fork the repo and follow these st
 9. Push to the Branch (`git push origin <featureName>`)
 10. Open a Pull Request and follow the rules under "Where should I make my pull request to?"
 
-## Workflow after setup
+### Workflow after setup
 
 1. `git status` to see your working branch
 2. `git pull`
@@ -37,28 +39,28 @@ If you want to help us improve our API, please fork the repo and follow these st
 7. `git commit -m "message"`
 8. `git push --set-upstream origin <featureName>` (On first commit)
 
-### After feature is finished
+#### After feature is finished
 
 1. Click merge
 2. Make sure the PR says base:main <- base:timer
 
-## Where should I make my pull request to?
+### Where should I make my pull request to?
 
 <ins>Never make a pull request into the main branch</ins>. If you plan on adding a feature, wait until you have completely finished that feature and then make a pull request into "test" with a clear description of the issue you are solving.
 
-# Instructions for Install - For Users
+## Instructions for Install - For Users
 
 ---
 
-## Packages/Dependencies used
+### Packages/Dependencies used
 
-## bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
+### bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
 
-## Install all the dependencies or node packages used for development via Terminal
+### Install all the dependencies or node packages used for development via Terminal
 
-## `npm install`
+### `npm install`
 
-## Things to add
+### Things to add
 
 -   Create a `.env` file and add the following as `key: value`
     -   PORT: 2121 (can be any port example: 3000)
