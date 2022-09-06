@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <title>Timeato Login</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/login.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/favicon.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <img class="login__image" src="../assets/login-images/studying.jpg">
+
+  <div class="login__text-container">
+    <header class="login__header">
+      <a href="/"><div class="login__logo"></div></a>
+      <h2 class="signup__redirect">Not a user? <a class="signup__link" href="/signup">Sign up now</a></h2>
+    </header>
+
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -17,10 +38,26 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+
+    <div class="login__form-container">
+      <h1 class="login__title">Login to Timeato</h1>
+      <hr>
+      <form class="login__form" action="/login" method="POST">
+        <ul class="login__list">
+          <li class="login__listitem">
+            <h3 class="login__subheading">Email:</h3>
+            <input class="login__input" type="email" name="email" placeholder="Email"/>
+          </li>
+          <li class="login__listitem">
+            <h3 class="login__subheading">Password <span class="password__min-len">(8 character min.)</span>:</h3>
+            <input class="login__input" type="password" name="password" placeholder="Password"/>
+          </li>
+          <li class="submit__listitem">
+            <input class="login__btn" type="submit" value="Login" />
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
