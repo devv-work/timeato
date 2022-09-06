@@ -129,9 +129,7 @@ ul {
 .minutes {
 	text-align: right;
 }
-h6 {
-	display: inline-block;
-}
+
 .timeSelect {
 	font-size: 1.5rem;
 }
@@ -182,10 +180,6 @@ h6 {
 	cursor: pointer;
 	top: -0.35rem;
 	box-shadow: 0 0.7rem #bbbbbb;
-}
-
-.active{
-  background: #124237;
 }
 
 @media all and (max-width: 600px) {
