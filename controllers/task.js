@@ -23,6 +23,7 @@ module.exports = {
 
       // If the task doesnt exists, create the task
       if (currentTask === undefined) {
+        // push a new task to the taskArray
         taskArray.push({
           taskName: req.body.taskName,
           totalFocusTime: req.body.focusTime,
@@ -42,14 +43,28 @@ module.exports = {
       } else { // update the task
         // grab properties from the current task
         const { totalFocusTime, totalSessions, sessions } = currentTask
-        // updating properties
+        // update the property values
         totalFocusTime += req.body.focusTime
         totalSessions += 1
 
+        const today = sessions[sessions.length - 1]
+
         // check to see if the last session was today
-        if (sessions[sessions.length - 1].date === req.body.date) {
+        if (req.body.date === today) {
+          // grab properties from todays session
+          const { todaysFocusTime, todaysBreakTime, sessionInfo } = today
+
+          // update property values
+          todaysFocusTime += req.body.focusTime
+          todaysBreakTime += req.body.breakTime
+
+          // push the current session info
+          sessionInfo.push({
+            focusTime: req.body.focusTime, breakTime: req.body.breakTime
+          })
 
         } else { // add a new session
+          // push a new session to session array
           sessions.push({
             date: req.body.date,
             todaysFocusTime: req.body.focusTime,
