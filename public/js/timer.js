@@ -7,12 +7,15 @@ timeSelect.addEventListener('change', setTime);
 
 const listItems = document.querySelectorAll('.pomodoro__list-item')
 
+
+timeSelect.addEventListener('change', setTime);
+
+const listItems = document.querySelectorAll('.pomodoro__list-item');
+
 // adds event listeners to all items in the pomodoro__list
-listItems.forEach(listItem => {
-
-  listItem.addEventListener('click', setTagName)
-
-})
+listItems.forEach((listItem) => {
+	listItem.addEventListener('click', setTagName);
+});
 
 
 const timerObject = {
@@ -37,6 +40,16 @@ function setTime() {
 	displayTimer(minutes, seconds);
 }
 
+function setTime() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.elapsedTime = 0;
+	let duration = 60 * timerObject.focusTime;
+	const [minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+}
+
 /**
  * Name: handleStartButtonClick()
  * Description: On button click, assigns focusTime, declares duration of timer, and start timer
@@ -47,11 +60,11 @@ function handleStartButtonClick() {
 	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
-		startTimer(duration);
+		handleTimer(duration);
 		timerObject.active = true;
 	} else {
 		console.log('Stopping Timer');
-		startTimer(duration, false);
+		handleTimer(duration, false);
 		timerObject.active = false;
 	}
 }
@@ -62,7 +75,8 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 
-function startTimer(duration) {
+
+function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
@@ -74,6 +88,7 @@ function startTimer(duration) {
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
+
 			favIcon.href = "./assets/favicon.jpg"
 		}
 	}, 1000); // <- Interval in ms
@@ -102,6 +117,7 @@ function calculateTimer(timer) {
  */
 function displayTimer(minutes, seconds) {
 	const display = document.querySelector('.timerDisplay');
+	document.title = minutes + ':' + seconds;
 	display.innerText = minutes + ':' + seconds;
 }
 
@@ -151,5 +167,5 @@ function formatDate() {
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
   timerObject.taskName = e.target.innerText;
-}
+  }
 
