@@ -43,7 +43,7 @@ function setTime() {
  * Description: On button click, assigns focusTime, declares duration of timer, and start timer
  *
  */
- Wa5R1jY75vYC!
+
 function handleStartButtonClick() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
@@ -83,7 +83,7 @@ function handleTimer(duration) {
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
 		}
-	}, 1); // <- Interval in ms
+	}, 1000); // <- Interval in ms
 }
 
 /**
