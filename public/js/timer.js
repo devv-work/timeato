@@ -2,14 +2,16 @@ const timerStartStopBtn = document.querySelector('.timerStartStop');
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
-const listItems = document.querySelectorAll('.pomodoro__list-item')
+
+timeSelect.addEventListener('change', setTime);
+
+const listItems = document.querySelectorAll('.pomodoro__list-item');
+listItem.addEventListener('click', setTagName)
 
 // adds event listeners to all items in the pomodoro__list
-listItems.forEach(listItem => {
-
-	listItem.addEventListener('click', setTagName)
-
-})
+listItems.forEach((listItem) => {
+	listItem.addEventListener('click', setTagName);
+});
 
 const timerObject = {
 	focusTime: 0,
@@ -18,9 +20,30 @@ const timerObject = {
 	active: false,
 	taskName: 'general',
 	totalSessions: 0,
+	elapsedTime: 0,
 	sessionInfo: [],
 	date: formatDate(),
 };
+const favIcon = document.getElementsByTagName('link')[2];
+function setTime() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.elapsedTime = 0;
+	let duration = 60 * timerObject.focusTime;
+	const [minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+}
+
+function setTime() {
+	timerObject.focusTime = parseInt(
+		document.querySelector('#timeSelect').value
+	);
+	timerObject.elapsedTime = 0;
+	let duration = 60 * timerObject.focusTime;
+	const [minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+}
 
 /**
  * Name: handleStartButtonClick()
@@ -29,32 +52,42 @@ const timerObject = {
  */
 function handleStartButtonClick() {
 	// timerObject.taskName = document.querySelector('#taskName').value;
-	// !!! ^ This will need to be refactored to accept button clicks on our tag options, was originally a text input.
-	// Assigns the current timer duration to timerObject
-	timerObject.focusTime = parseInt(
-		document.querySelector('#timeSelect').value
-	);
-	// Convert the minutes selected to seconds
-	let duration = 60 * timerObject.focusTime;
-	// Pass seconds into startTimer
-	startTimer(duration);
+	let duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
+	if (timerObject.active === false) {
+		console.log('Starting Timer');
+		handleTimer(duration);
+		timerObject.active = true;
+	} else {
+		console.log('Stopping Timer');
+		handleTimer(duration, false);
+		timerObject.active = false;
+	}
 }
 
 /**
- * Name: startTimer
+ * Name: handleTimer
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-function startTimer(duration) {
-	updateTask();
+function handleTimer(duration) {
+  updateTask();
 	const intervalId = setInterval(function () {
+		timerObject.elapsedTime = timerObject.elapsedTime + 1;
+		console.log(timerObject.elapsedTime);
 		const [minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
-			stopTimer(intervalId);
+			clearInterval(intervalId);
 			updateTimerObject();
 		}
-	}, 1); // <- Interval in ms
+		if (timerObject.active === false) {
+			clearInterval(intervalId);
+
+			favIcon.href = './assets/favicon.jpg';
+		}
+	}, 1000); // <- Interval in ms
+	console.log(favIcon.href);
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -78,12 +111,14 @@ function calculateTimer(timer) {
  */
 function displayTimer(minutes, seconds) {
 	const display = document.querySelector('.timerDisplay');
+	document.title = minutes + ':' + seconds;
 	display.innerText = minutes + ':' + seconds;
 }
 
 // Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
+	favIcon.href = './assets/favicon-timerstarted.jpg';
 }
 
 /**
@@ -125,9 +160,7 @@ function formatDate() {
 // retrieves the text inside the list item that was clicked on
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
-
 	timerObject.taskName = e.target.innerText;
-
 }
 
 // ########################## addTask Controller fetch #######################################

@@ -6,195 +6,203 @@ Medium Green: #257866
 Dark Green: #184f42 */
 
 body {
-
-  background-color: #28966b;
-
+	background-color: #28966b;
 }
 
 ul {
-  padding: 0;
+	padding: 0;
 }
 
 .background {
-  position: absolute;
-  z-index: -1000;
-  opacity: .3;
-  top: 0;
-  object-fit: cover;
-  height: 100vh;
-  width: 100vw;
+	position: absolute;
+	z-index: -1000;
+	opacity: 0.3;
+	top: 0;
+	object-fit: cover;
+	height: 100vh;
+	width: 100vw;
 }
 
 .wrapper {
-  width: 500px;
-  margin: auto;
-  margin-top: 3rem;
+	width: 500px;
+	margin: auto;
+	margin-top: 3rem;
 }
 
 .primary-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	background: #124237;
+	padding: 1.25rem 2rem;
 
-  background: #124237;
-  padding: 1.25rem 2rem;
-
-  border-radius: 0.5rem 0.5rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
-  border-right: 1px solid rgba(255, 255, 255, 0.18);
-
+	border-radius: 0.5rem 0.5rem 0 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.18);
+	border-left: 1px solid rgba(255, 255, 255, 0.18);
+	border-right: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .positivity {
-  color: white;
+	color: white;
 }
 
 .logout__btn {
-  position: relative;
+	position: relative;
 
-  text-decoration: none;
+	text-decoration: none;
 
-  font-size: 1rem;
-  font-weight: 600;
-  background: white;
-  color: black;
+	font-size: 1rem;
+	font-weight: 600;
+	background: white;
+	color: black;
 
-  padding: .5rem 1rem;
-  margin-bottom: .25rem;
+	padding: 0.5rem 1rem;
+	margin-bottom: 0.25rem;
 
-  border: none;
-  border-radius: .5rem;
-  box-shadow: 0 0.35rem #bbbbbb;
+	border: none;
+	border-radius: 0.5rem;
+	box-shadow: 0 0.35rem #bbbbbb;
 }
 
 .logout__btn:hover {
-  cursor: pointer;
-  top: -0.3rem;
-  box-shadow: 0 .7rem #bbbbbb;
+	cursor: pointer;
+	top: -0.3rem;
+	box-shadow: 0 0.7rem #bbbbbb;
 }
 
 .pomodoro__title {
-  display: block;
-  text-align: center;
-  font-size: 3rem;
-  color: white;
+	display: block;
+	text-align: center;
+	font-size: 3rem;
+	color: white;
 }
 
 .header__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 1rem;
+	margin: auto;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
-  margin: auto;
+	background: rgba(26, 85, 71, 0.8);
+	box-shadow: 0 8px 5px #124237;
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
 
-  background: rgba(26, 85, 71, 0.8);
-  box-shadow: 0 8px 5px #124237;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-
-  border-radius: 0 0 0.5rem 0.5rem;
-  border-top: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
-  border-right: 1px solid rgba(255, 255, 255, 0.18);
-
+	border-radius: 0 0 0.5rem 0.5rem;
+	border-top: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+	border-left: 1px solid rgba(255, 255, 255, 0.18);
+	border-right: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-
 .pomodoro__timer {
-
-  font-size: 3rem;
-  margin: 0;
-  text-align: center;
-
+	font-size: 3rem;
+	margin: 0;
+	text-align: center;
 }
 
 .timerDisplay {
+	font-size: 6.5rem;
+	color: white;
 
-  font-size: 6.5rem;
-  color: white;
+	padding-inline: auto;
+	margin-block: 2rem;
 
-  padding-inline: 2rem;
-  margin-block: 2rem;
 
-  border-radius: 0.5rem;
-
-  background: rgba(12, 41, 34, 0.25);
-  box-shadow: 0 8px 100px #90c1ac;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-bottom: 0.25rem solid #0c2922cc;
+	border-radius: 0.5rem;
+	background: rgba(12, 41, 34, 0.25);
+	box-shadow: 0 8px 100px #90c1ac;
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-bottom: 0.25rem solid #0c2922cc;
+	width: 22.6rem;
 }
-
+.pomodoro__digits {
+	display: inline-block;
+	width: 8.6rem;
+}
+.seconds {
+	text-align: left;
+}
+.minutes {
+	text-align: right;
+}
+h6 {
+	display: inline-block;
+}
 .timeSelect {
-
-  font-size: 1.5rem;
-
+	font-size: 1.5rem;
 }
 
 .inner__container {
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .pomodoro__list {
-
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding-block: 0.5rem;
-
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	padding-block: 0.5rem;
 }
 
 .pomodoro__list-item {
-
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-  border-radius: 5px;
-  border: 2px solid white;
-  color: white;
-  font-size: 1.5rem;
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
+	border-radius: 5px;
+	border: 2px solid white;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	-webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
 
 }
 
 .pomodoro__cta {
-
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 2rem;
-  color: white;
-
+	margin-top: 2rem;
+	text-align: center;
+	font-size: 2rem;
+	color: white;
 }
 
 .timerStartStop {
-  font-size: 1.5rem;
-  background: white;
-  color: black;
+	font-size: 1.5rem;
+	background: white;
+	color: black;
 
-  padding: 1rem 2rem;
-  border-radius: .5rem;
+	padding: 1rem 2rem;
+	border-radius: 0.5rem;
 
-  border: none;
-  box-shadow: 0 0.35rem #bbbbbb;
-  position: relative;
-  margin-bottom: 2rem;
+	border: none;
+	box-shadow: 0 0.35rem #bbbbbb;
+	position: relative;
+	margin-bottom: 2rem;
 }
 
 .timerStartStop:hover {
-  cursor: pointer;
-  top: -0.35rem;
-  box-shadow: 0 .7rem #bbbbbb;
+	cursor: pointer;
+	top: -0.35rem;
+	box-shadow: 0 0.7rem #bbbbbb;
+}
+
+.active{
+  background: #124237;
+
 }
 
 @media all and (max-width: 600px) {
-  html {
-    font-size: 50%;
-  }
+	html {
+		font-size: 50%;
+	}
 
-  .wrapper {
-    width: 350px;
-  }
+	.wrapper {
+		width: 350px;
+	}
 }
