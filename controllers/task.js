@@ -40,30 +40,40 @@ module.exports = {
         amountOfCycles
       } = sessions
 
+      // Destructuring sessionInfo
 
-        // taskArray properties
+      let {
+        focusTime,
+        breakTime
+      } = sessionInfo
+
+
+        // TaskSchema: taskName
         taskName = req.body.taskName
+
+        // TaskSchema: totalFocusTime
         totalFocusTime += req.body.focusTime
+
+        // TaskSchema: totalSessions
         totalSessions = sessions.length
         
+        // SessionSchema: date
+        date = req.body.date
 
-        date = 
-        todaysFocusTime = 
-        todaysBreakTime = 
-        sessionInfo = 
-        amountOfCycles = 
+        // SessionSchema: todaysFocusTime
+        todaysFocusTime += req.body.focusTime
 
-      // TaskListSchema: TaskSchema
-      // TaskSchema: taskName
-      // TaskSchema: totalFocusTime
-      // TaskSchema: totalSessions
-      // SessionSchema: date
-      // SessionSchema: todaysFocusTime
-      // SessionSchema: todaysBreakTime
-      // SessionSchema: sessionInfo
-      // SessionSchema: amountOfCycles
-      // CycleSchema: focusTime
-      // CycleSchema: breakTime
+        // SessionSchema: todaysBreakTime
+        todaysBreakTime = req.body.breakTime
+        
+        // SessionSchema: amountOfCycles
+        amountOfCycles = sessionInfo.length
+
+        // CycleSchema: focusTime
+        focusTime = req.body.focusTime
+
+        // CycleSchema: breakTime
+        breakTime = req.body.breakTime  
 
     }catch(err){
       console.log(err)
