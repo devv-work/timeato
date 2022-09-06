@@ -46,6 +46,7 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 function startTimer(duration) {
+	addTask();
 	const intervalId = setInterval(function () {
 		const [minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);

@@ -12,7 +12,7 @@ module.exports = {
     console.log('deleteTime')
   },
   addTask: async (req, res) => {
-
+    console.log(req.body)
   },
   updateTask: async (req, res) => {
     try {
@@ -28,6 +28,8 @@ module.exports = {
       if (currentTask === undefined) {
         res.redirect('/addTask')
       }
+
+
 
       // Save changes in db
       taskList.save((err) => console.error(err))
