@@ -12,12 +12,12 @@ module.exports = {
     console.log('deleteTime')
   },
   addTask: async (req, res) => {
-    console.log(req.body)
+    console.log(req)
   },
   updateTask: async (req, res) => {
     try {
       // Find the user
-      const user = await User.find({ _id: req.user.id })
+      const user = await User.findOne({ _id: req.user.id })
       // access taskArray property
       const { taskArray } = user
 

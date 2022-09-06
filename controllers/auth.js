@@ -1,7 +1,6 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
-const TaskList = require('../models/TaskList')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -66,12 +65,11 @@ exports.postSignup = (req, res, next) => {
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
-  const taskList = new TaskList()
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
-    taskListId: taskList,
+    taskList: [],
   })
 
   User.findOne({
@@ -85,9 +83,6 @@ exports.postSignup = (req, res, next) => {
       req.flash('errors', { msg: 'Account with that email address or username already exists.' })
       return res.redirect('../signup')
     }
-    taskList.save((err) => {
-      if (err) { return next(err) }
-    })
     user.save((err) => {
       if (err) { return next(err) }
       req.logIn(user, (err) => {
