@@ -184,10 +184,16 @@ ul {
 	margin-bottom: 2rem;
 }
 
-.timerStartStop:hover {
-	cursor: pointer;
-	top: -0.35rem;
-	box-shadow: 0 0.7rem #bbbbbb;
+.timerStartStopStopped:hover {
+	cursor: pointer !important;
+	top: -0.35rem !important;
+	box-shadow: 0 0.7rem #bbbbbb !important;
+}
+
+.timerStartStopStarted:hover {
+	cursor: pointer !important;
+	top: -0.35rem !important;
+	box-shadow: 0 0.7rem #9b3034 !important;
 }
 
 .active{
