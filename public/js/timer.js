@@ -83,13 +83,14 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 function handleTimer(duration) {
-  updateTask();
+  
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
 		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
+			updateTask();
 			clearInterval(intervalId);
 			updateTimerObject();
 		}
@@ -205,7 +206,7 @@ async function updateTask() {
 			})
 		})
 		const data = await response.json()
-		console.log(data)
+		// console.log(data)
 		location.reload()
 	} catch (err) {
 		console.log(err)
