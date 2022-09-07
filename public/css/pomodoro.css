@@ -43,8 +43,8 @@ ul {
 	border-right: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.positivity {
-	color: white;
+.user-welcome {
+  color: white;
 }
 
 .logout__btn {
@@ -184,15 +184,35 @@ ul {
 	margin-bottom: 2rem;
 }
 
-.timerStartStop:hover {
-	cursor: pointer;
-	top: -0.35rem;
-	box-shadow: 0 0.7rem #bbbbbb;
+.timerStartStopStopped:hover {
+	cursor: pointer !important;
+	top: -0.35rem !important;
+	box-shadow: 0 0.7rem #bbbbbb !important;
+}
+
+.timerStartStopStarted:hover {
+	cursor: pointer !important;
+	top: -0.35rem !important;
+	box-shadow: 0 0.7rem #9b3034 !important;
 }
 
 .active{
   background: #124237;
 
+}
+footer{
+	margin:auto;
+	width:50%;
+	text-align: center;
+	padding-inline:0.5rem;
+	font-size:1.5rem;
+	position:absolute;
+	bottom:2rem;
+	left:50%;
+	transform: translate(-50%);
+}
+.attribution,.attribution__href{
+	color:white;
 }
 
 @media all and (max-width: 600px) {

@@ -23,7 +23,7 @@
 		<div class="wrapper">
 			<!-- Pomodoro time -->
 			<nav class="primary-nav">
-				<h2 class="positivity">Success is the sum of small efforts!</h2>
+				<h2 class="user-welcome">Welcome, <%= user.userName %>!</h2>
 				<a href="/logout" class="logout__btn">Logout</a>
 			</nav>
 			<div class="container">
@@ -45,7 +45,7 @@
 							<span class="pomodoro__digits minutes">00</span
 							>:<span class="pomodoro__digits seconds">00</span>
 						</h2>
-						<button class="timerStartStop">Start/Stop</button>
+						<button class="timerStartStop timerStartStopStopped">Start/Stop</button>
 					</section>
 				</header>
 				<section class="inner__container">
@@ -92,4 +92,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/timer.js"></script>
 	</body>
+	<footer>
+		<span class="attribution">Put together by the OpenSource team <a class="attribution__href" href="https://github.com/devv-work">devv-work</a>.</span>
+	</footer>
 </html>
