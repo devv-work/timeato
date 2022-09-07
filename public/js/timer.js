@@ -146,12 +146,6 @@ function displayTimer(minutes, seconds) {
 // Stops the timer.
 function stopTimer(intervalId) {
 	clearInterval(intervalId);
-	favIcon.href = './assets/favicon-timerstarted.jpg';
-	timerStartStopBtn.style.backgroundColor = '#ea5559'
-	timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
-	timerStartStopBtn.style.color = 'white'
-	timerStartStopBtn.classList.add('timerStartStopStarted')
-	timerStartStopBtn.classList.remove('timerStartStopStopped')
 }
 
 /**
