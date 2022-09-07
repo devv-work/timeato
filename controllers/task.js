@@ -2,8 +2,9 @@ const User = require('../models/User')
 const Task = require('../models/Task')
 
 module.exports = {
-  getTime: (req, res) => {
-    res.render('pomodoro')
+  getTime: async (req, res) => {
+    const user = await User.findOne({ _id: req.user.id })
+    res.render('pomodoro.ejs', {user: req.user})
   },
   addTime: (req, res) => {
     console.log('addTime')
