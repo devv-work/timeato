@@ -2,6 +2,7 @@ const timerStartStopBtn = document.querySelector('.timerStartStop');
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
+const title = document.querySelector('.pomodoro__title')
 
 timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', stopTimer);
@@ -11,11 +12,13 @@ const listItems = document.querySelectorAll('.pomodoro__list-item');
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
+
 });
 
 let [minutes, seconds] = calculateTimer(1500);
 displayTimer(minutes, seconds);
 let duration = 1500;
+
 const timerObject = {
 	focusTime: 0,
 	breakTime: 0,
@@ -171,6 +174,7 @@ function formatDate() {
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
 	timerObject.taskName = e.target.innerText;
+	title.innerText = e.target.innerText
 }
 
 // ########################## addTask Controller fetch #######################################
