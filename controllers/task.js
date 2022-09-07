@@ -3,8 +3,7 @@ const Task = require('../models/Task')
 
 module.exports = {
   getTime: async (req, res) => {
-    const user = await User.findOne({ _id: req.user.id })
-    res.render('pomodoro.ejs', {user: req.user})
+    res.render('pomodoro.ejs', { user: req.user })
   },
   addTime: (req, res) => {
     console.log('addTime')
@@ -14,10 +13,8 @@ module.exports = {
   },
   updateTask: async (req, res) => {
     try {
-      // Find the user
-      const user = await User.findOne({ _id: req.user.id })
-      // access taskArray property
-      const { taskArray } = user
+      // access taskArray property from the user
+      const { taskArray } = req.user
 
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskArray.find((task) => task.taskName === req.body.taskName)
