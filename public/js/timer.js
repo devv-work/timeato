@@ -84,7 +84,6 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 function handleTimer(duration) {
-  updateTask();
 	const intervalId = setInterval(function () {
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
 		console.log(timerObject.elapsedTime);
@@ -93,6 +92,7 @@ function handleTimer(duration) {
 		if (--duration < 0) {
 			clearInterval(intervalId);
 			updateTimerObject();
+			updateTask();
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
