@@ -10,7 +10,7 @@ module.exports = {
       sessionInfo: [
         { focusTime: 0, breakTime: 0 },
       ],
-      amountOfCycles: 0,
+      amountOfCycles: 1,
     },
   ]
 }

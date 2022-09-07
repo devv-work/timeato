@@ -1,7 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
-const defaultTask = require('./default')
+const defaultTask = require('../config/default.js')
 
 
 exports.getLogin = (req, res) => {
