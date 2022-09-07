@@ -89,9 +89,9 @@ function handleTimer(duration) {
 		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
 		if (--duration < 0) {
-			updateTask();
 			clearInterval(intervalId);
 			updateTimerObject();
+			updateTask();
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
