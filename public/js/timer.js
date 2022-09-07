@@ -98,7 +98,7 @@ function handleTimer(duration) {
 
 			favIcon.href = './assets/favicon.jpg';
 		}
-	}, 1000); // <- Interval in ms
+	}, 1); // <- Interval in ms
 	console.log(favIcon.href);
 	favIcon.href = './assets/favicon-timerstarted.jpg';
 }

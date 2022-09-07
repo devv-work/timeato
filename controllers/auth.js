@@ -1,6 +1,8 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const defaultTask = require('./default')
+
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -65,11 +67,13 @@ exports.postSignup = (req, res, next) => {
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
+  
+
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
-    taskArray: [],
+    taskArray: [defaultTask],
   })
 
   User.findOne({

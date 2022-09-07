@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
-const { TaskSchema } = require('./Task').schema
+const TaskSchema  = require('./Task').schema
 
 const UserSchema = new mongoose.Schema({
   userName: {

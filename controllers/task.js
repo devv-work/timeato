@@ -42,7 +42,7 @@ module.exports = {
         })
       } else { // if the task did exist update the task
         // grab properties from the current task
-        const { totalFocusTime, totalSessions, sessions } = currentTask
+        let { totalFocusTime, totalSessions, sessions } = currentTask
         // update the property values
         totalFocusTime += req.body.focusTime
         totalSessions += 1
