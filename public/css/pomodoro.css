@@ -194,6 +194,20 @@ ul {
   background: #124237;
 
 }
+footer{
+	margin:auto;
+	width:50%;
+	text-align: center;
+	padding-inline:0.5rem;
+	font-size:1.5rem;
+	position:absolute;
+	bottom:2rem;
+	left:50%;
+	transform: translate(-50%);
+}
+.attribution,.attribution__href{
+	color:white;
+}
 
 @media all and (max-width: 600px) {
 	html {
