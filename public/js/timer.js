@@ -7,7 +7,6 @@ timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', stopTimer);
 
 const listItems = document.querySelectorAll('.pomodoro__list-item');
-listItem.addEventListener('click', setTagName)
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
