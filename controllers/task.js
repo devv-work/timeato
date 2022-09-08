@@ -13,8 +13,10 @@ module.exports = {
   },
   updateTask: async (req, res) => {
     try {
+      // current user
+      const user = await User.findOne({ _id: req.user.id })
       // access taskArray property from the user
-      const { taskArray } = req.user
+      const { taskArray } = user
 
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskArray.find((task) => task.taskName === req.body.taskName)
@@ -45,10 +47,13 @@ module.exports = {
         totalFocusTime += req.body.focusTime
         totalSessions += 1
 
+        // the last session in a users session array
         const today = sessions[sessions.length - 1]
+        // format the request date
+        const dateFromReq = formatDate(new Date(req.body.date))
 
-        // check to see if the last session was today
-        if (req.body.date === today) {
+        // check to see if a session has been made for today, if so update that session, otherwise add a new session
+        if (formatDate(today.date) === dateFromReq) {
           // grab properties from todays session
           let { todaysFocusTime, todaysBreakTime, sessionInfo } = today
 
@@ -74,10 +79,26 @@ module.exports = {
         }
       }
 
+      // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
+      let { uniqueDatesLoggedIn } = user
+      uniqueDatesLoggedIn.push(req.body.date)
+      uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
+
       // Save changes in db
-      user.save((err) => console.error(err))
+      user.save()
     } catch (err) {
-      console.error(err)
+      console.error({ location: 'try catch updateTask task.js', err })
     }
   }
+}
+
+// Converts Date() to mm/dd/yyyy format
+function formatDate(date) {
+  const yyyy = date.getFullYear();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+  const formattedToday = mm + '/' + dd + '/' + yyyy;
+  return formattedToday;
 }
