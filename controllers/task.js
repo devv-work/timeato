@@ -14,7 +14,7 @@ module.exports = {
   updateTask: async (req, res) => {
     try {
       // current user
-      const user = req.user
+      const user = await User.findOne({ _id: req.user.id })
       // access taskArray property from the user
       const { taskArray } = user
 
@@ -47,13 +47,13 @@ module.exports = {
         totalFocusTime += req.body.focusTime
         totalSessions += 1
 
-        // format the date from the last session in a users session array
-        const today = formatDate(sessions[sessions.length - 1].date)
+        // the last session in a users session array
+        const today = sessions[sessions.length - 1]
         // format the request date
-        const dateFromReq = formatDate(req.body.date)
+        const dateFromReq = formatDate(new Date(req.body.date))
 
         // check to see if a session has been made for today, if so update that session, otherwise add a new session
-        if (today === dateFromReq) {
+        if (formatDate(today.date) === dateFromReq) {
           // grab properties from todays session
           let { todaysFocusTime, todaysBreakTime, sessionInfo } = today
 
@@ -80,14 +80,12 @@ module.exports = {
       }
 
       // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
-      const { uniqueDatesLoggedIn } = user
+      let { uniqueDatesLoggedIn } = user
       uniqueDatesLoggedIn.push(req.body.date)
       uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
 
       // Save changes in db
-      user.save((err) => {
-        console.log({ location: 'user.save in timer.js', err })
-      })
+      user.save()
     } catch (err) {
       console.error({ location: 'try catch updateTask task.js', err })
     }
@@ -96,6 +94,7 @@ module.exports = {
 
 // Converts Date() to mm/dd/yyyy format
 function formatDate(date) {
+  console.log(date, typeof date)
   const yyyy = date.getFullYear();
   let mm = date.getMonth() + 1; // Months start at 0!
   let dd = date.getDate();
