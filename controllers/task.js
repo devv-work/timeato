@@ -47,10 +47,13 @@ module.exports = {
         totalFocusTime += req.body.focusTime
         totalSessions += 1
 
-        const today = sessions[sessions.length - 1]
+        // format the date from the last session in a users session array
+        const today = formatDate(sessions[sessions.length - 1].date)
+        // format the request date
+        const dateFromReq = formatDate(req.body.date)
 
-        // check to see if the last session was today
-        if (req.body.date === today) {
+        // check to see if a session has been made for today, if so update that session, otherwise add a new session
+        if (today === dateFromReq) {
           // grab properties from todays session
           let { todaysFocusTime, todaysBreakTime, sessionInfo } = today
 
@@ -89,4 +92,15 @@ module.exports = {
       console.error({ location: 'try catch updateTask task.js', err })
     }
   }
+}
+
+// Converts Date() to mm/dd/yyyy format
+function formatDate(date) {
+  const yyyy = date.getFullYear();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+  const formattedToday = mm + '/' + dd + '/' + yyyy;
+  return formattedToday;
 }
