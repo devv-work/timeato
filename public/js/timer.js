@@ -85,14 +85,18 @@ function handleStartButtonClick() {
  */
 function handleTimer(duration) {
 	const intervalId = setInterval(function () {
+		// update elapsed time
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
-		console.log(timerObject.elapsedTime);
+		console.table({ location: 'timer.js', elapsedTime: timerObject.elapsedTime });
+
+		// display timer and update task within db
 		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
+		updateTask();
+
 		if (--duration < 0) {
 			clearInterval(intervalId);
 			updateTimerObject();
-			updateTask();
 		}
 		if (timerObject.active === false) {
 			clearInterval(intervalId);
@@ -108,7 +112,7 @@ function handleTimer(duration) {
 
 		}
 	}, 1000); // <- Interval in ms
-	console.log(favIcon.href);
+	console.log({ location: 'timer.js', faviconhref: favIcon.href });
 	favIcon.href = './assets/favicon-timerstarted.jpg';
 	timerStartStopBtn.style.backgroundColor = '#ea5559'
 	timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
@@ -169,7 +173,7 @@ function updateTimerObject() {
 		focusTime: timerObject.focusTime,
 		breakTime: timerObject.breakTime,
 	});
-	console.log(timerObject);
+	console.log({ location: 'timer.js', timerObject });
 }
 
 // Converts Date() to mm/dd/yyyy format
@@ -195,6 +199,7 @@ function setTagName(e) {
 
 // Send the timer object to the addTask controller through a json
 async function updateTask() {
+	console.table('inside updateTask method')
 
 	try {
 		const response = await fetch('task/updateTask', {
@@ -216,9 +221,9 @@ async function updateTask() {
 			})
 		})
 		const data = await response.json()
-		console.log(data)
+		console.table({ location: 'timer.js', data })
 		location.reload()
 	} catch (err) {
-		console.log(err)
+		console.log({ location: 'from fetch in timer.js', err })
 	}
 }
