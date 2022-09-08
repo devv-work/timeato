@@ -105,7 +105,7 @@ function handleTimer(duration) {
 
 
 
-			
+
 		}
 	}, 1000); // <- Interval in ms
 	console.log(favIcon.href);
@@ -115,7 +115,7 @@ function handleTimer(duration) {
 	timerStartStopBtn.style.color = 'white'
 	timerStartStopBtn.classList.add('timerStartStopStarted')
 	timerStartStopBtn.classList.remove('timerStartStopStopped')
-	
+
 }
 
 /**
@@ -192,9 +192,6 @@ function setTagName(e) {
 }
 
 // ########################## addTask Controller fetch #######################################
-
-// On click of the start/stop button, run addTask
-document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
 
 // Send the timer object to the addTask controller through a json
 async function updateTask() {
