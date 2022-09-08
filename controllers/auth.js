@@ -2,6 +2,8 @@ const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
 
+
+
 exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/task')
@@ -70,6 +72,7 @@ exports.postSignup = (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     taskArray: [],
+    uniqueDatesLoggedIn: [],
   })
 
   User.findOne({

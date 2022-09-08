@@ -1,13 +1,14 @@
+// DOM Elements
 const timerStartStopBtn = document.querySelector('.timerStartStop');
-timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
 const title = document.querySelector('.pomodoro__title')
+const listItems = document.querySelectorAll('.pomodoro__list-item');
 
+// Events
+timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', stopTimer);
-
-const listItems = document.querySelectorAll('.pomodoro__list-item');
 
 
 // adds event listeners to all items in the pomodoro__list
@@ -29,7 +30,7 @@ const timerObject = {
 	totalSessions: 0,
 	elapsedTime: 0,
 	sessionInfo: [],
-	date: formatDate(),
+	date: new Date(),
 };
 const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
@@ -67,6 +68,10 @@ function handleStartButtonClick() {
 	if (duration < 0) {
 		setTime();
 	}
+
+	// update task in db
+	updateTask()
+
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
 		handleTimer(duration);
@@ -84,12 +89,15 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 function handleTimer(duration) {
-  updateTask();
 	const intervalId = setInterval(function () {
+		// update elapsed time
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
-		console.log(timerObject.elapsedTime);
+		console.table('elapsedTime', timerObject.elapsedTime);
+
+		// display timer and update task within db
 		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
+
 		if (--duration < 0) {
 			clearInterval(intervalId);
 			updateTimerObject();
@@ -105,17 +113,17 @@ function handleTimer(duration) {
 
 
 
-			
+
 		}
 	}, 1000); // <- Interval in ms
-	console.log(favIcon.href);
+	console.log({ location: 'timer.js', faviconhref: favIcon.href });
 	favIcon.href = './assets/favicon-timerstarted.jpg';
 	timerStartStopBtn.style.backgroundColor = '#ea5559'
 	timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
 	timerStartStopBtn.style.color = 'white'
 	timerStartStopBtn.classList.add('timerStartStopStarted')
 	timerStartStopBtn.classList.remove('timerStartStopStopped')
-	
+
 }
 
 /**
@@ -169,19 +177,7 @@ function updateTimerObject() {
 		focusTime: timerObject.focusTime,
 		breakTime: timerObject.breakTime,
 	});
-	console.log(timerObject);
-}
-
-// Converts Date() to mm/dd/yyyy format
-function formatDate() {
-	const today = new Date();
-	const yyyy = today.getFullYear();
-	let mm = today.getMonth() + 1; // Months start at 0!
-	let dd = today.getDate();
-	if (dd < 10) dd = '0' + dd;
-	if (mm < 10) mm = '0' + mm;
-	const formattedToday = mm + '/' + dd + '/' + yyyy;
-	return formattedToday;
+	console.log({ location: 'timer.js', timerObject });
 }
 
 // retrieves the text inside the list item that was clicked on
@@ -193,35 +189,26 @@ function setTagName(e) {
 
 // ########################## addTask Controller fetch #######################################
 
-// On click of the start/stop button, run addTask
-document.querySelectorAll('.timerStartStop').addEventListener('click', addTask)
-
 // Send the timer object to the addTask controller through a json
 async function updateTask() {
+	console.log('inside updateTask method')
 
 	try {
 		const response = await fetch('task/updateTask', {
 			method: 'put',
 			headers: { 'Content-type': 'application/json' },
 			body: JSON.stringify({
-
-				// TaskSchema: taskName
+				// passing timer properties to updateTask controller to update a users task in db
 				'taskName': timerObject.taskName,
-
-				// SessionSchema: date
 				'date': timerObject.date,
-
-				// CycleSchema: focusTime
 				'focusTime': timerObject.focusTime,
-
-				// CycleSchema: breakTime
 				'breakTime': timerObject.breakTime,
 			})
 		})
 		const data = await response.json()
-		console.log(data)
+		console.table({ location: 'timer.js', data })
 		location.reload()
 	} catch (err) {
-		console.log(err)
+		console.log({ location: 'from fetch in timer.js', err })
 	}
 }
