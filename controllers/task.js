@@ -76,6 +76,11 @@ module.exports = {
         }
       }
 
+      // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
+      const { uniqueDatesLoggedIn } = user
+      uniqueDatesLoggedIn.push(req.body.date)
+      uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
+
       // Save changes in db
       user.save((err) => {
         console.log({ location: 'user.save in timer.js', err })
