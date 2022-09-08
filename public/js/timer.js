@@ -30,7 +30,7 @@ const timerObject = {
 	totalSessions: 0,
 	elapsedTime: 0,
 	sessionInfo: [],
-	date: new Date.now(),
+	date: new Date(),
 };
 const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
