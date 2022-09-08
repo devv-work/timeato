@@ -13,8 +13,12 @@ module.exports = {
   },
   updateTask: async (req, res) => {
     try {
+      // current user
+      const user = req.user
       // access taskArray property from the user
-      const { taskArray } = req.user
+      const { taskArray } = user
+
+      console.log(user)
 
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskArray.find((task) => task.taskName === req.body.taskName)
@@ -75,9 +79,11 @@ module.exports = {
       }
 
       // Save changes in db
-      user.save((err) => console.error(err))
+      user.save((err) => {
+        console.log({ location: 'user.save in timer.js', err })
+      })
     } catch (err) {
-      console.error(err)
+      console.error({ location: 'try catch updateTask task.js', err })
     }
   }
 }
