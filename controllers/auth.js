@@ -67,13 +67,12 @@ exports.postSignup = (req, res, next) => {
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
-  
-
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
     taskArray: [],
+    uniqueDatesLoggedIn: [],
   })
 
   User.findOne({
