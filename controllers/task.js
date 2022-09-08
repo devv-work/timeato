@@ -18,8 +18,6 @@ module.exports = {
       // access taskArray property from the user
       const { taskArray } = user
 
-      console.log(user)
-
       // Search to see if a task exists with the taskName passed through the request
       const currentTask = taskArray.find((task) => task.taskName === req.body.taskName)
 
