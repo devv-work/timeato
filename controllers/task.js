@@ -3,7 +3,11 @@ const Task = require('../models/Task')
 
 module.exports = {
   getTime: async (req, res) => {
-    res.render('pomodoro.ejs', { user: req.user })
+    const user = req.user
+    // if the uniqueDatesLoggedIn array has a length greater than 1, the user is returning to our app on a new day
+    const returningUser = user.uniqueDatesLoggedIn.length > 1
+
+    res.render('pomodoro.ejs', { user, returningUser })
   },
   addTime: (req, res) => {
     console.log('addTime')
@@ -81,7 +85,7 @@ module.exports = {
 
       // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
       let { uniqueDatesLoggedIn } = user
-      uniqueDatesLoggedIn.push(req.body.date)
+      uniqueDatesLoggedIn.push(formatDate(new Date(req.body.date)))
       uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
 
       // Save changes in db

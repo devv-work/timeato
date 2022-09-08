@@ -23,7 +23,12 @@
 		<div class="wrapper">
 			<!-- Pomodoro time -->
 			<nav class="primary-nav">
-				<h2 class="user-welcome">Welcome, <%= user.userName %>!</h2>
+				<!-- If a user is a returning user, render "Welcome back, <username>" -->
+				<% if (returningUser) { %>
+					<h2 class="user-welcome">Welcome back, <%= user.userName %>!</h2>
+				<% } else { %>
+					<h2 class="user-welcome">Welcome, <%= user.userName %>!</h2>
+				<% } %>
 				<a href="/logout" class="logout__btn">Logout</a>
 			</nav>
 			<div class="container">
