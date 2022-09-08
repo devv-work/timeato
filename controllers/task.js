@@ -94,7 +94,6 @@ module.exports = {
 
 // Converts Date() to mm/dd/yyyy format
 function formatDate(date) {
-  console.log(date, typeof date)
   const yyyy = date.getFullYear();
   let mm = date.getMonth() + 1; // Months start at 0!
   let dd = date.getDate();
