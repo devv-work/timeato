@@ -3,7 +3,11 @@ const Task = require('../models/Task')
 
 module.exports = {
   getTime: async (req, res) => {
-    res.render('pomodoro.ejs', { user: req.user })
+    const user = req.user
+    // if the uniqueDatesLoggedIn array has a length greater than 1, the user is returning to our app on a new day
+    const returningUser = user.uniqueDatesLoggedIn.length > 1
+
+    res.render('pomodoro.ejs', { user, returningUser })
   },
   addTime: (req, res) => {
     console.log('addTime')
