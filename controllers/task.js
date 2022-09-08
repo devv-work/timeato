@@ -83,10 +83,12 @@ module.exports = {
         }
       }
 
-      // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
+      // add date to uniqueDatesLoggedIn array if the date doesn't exist in the array
       let { uniqueDatesLoggedIn } = user
-      uniqueDatesLoggedIn.push(formatDate(new Date(req.body.date)))
-      uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
+      const reqDate = formatDate(new Date(req.body.date))
+      if(!uniqueDatesLoggedIn.includes(reqDate)) {
+        uniqueDatesLoggedIn.push(reqDate)
+      }
 
       // Save changes in db
       user.save()
