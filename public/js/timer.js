@@ -1,13 +1,14 @@
+// DOM Elements
 const timerStartStopBtn = document.querySelector('.timerStartStop');
-timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 const timerDisplay = document.querySelector('.timerDisplay');
 const timeSelect = document.querySelector('#timeSelect');
 const title = document.querySelector('.pomodoro__title')
+const listItems = document.querySelectorAll('.pomodoro__list-item');
 
+// Events
+timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', stopTimer);
-
-const listItems = document.querySelectorAll('.pomodoro__list-item');
 
 
 // adds event listeners to all items in the pomodoro__list
@@ -67,6 +68,10 @@ function handleStartButtonClick() {
 	if (duration < 0) {
 		setTime();
 	}
+
+	// update task in db
+	updateTask()
+
 	if (timerObject.active === false) {
 		console.log('Starting Timer');
 		handleTimer(duration);
@@ -198,7 +203,7 @@ function setTagName(e) {
 
 // Send the timer object to the addTask controller through a json
 async function updateTask() {
-	console.table('inside updateTask method')
+	console.log('inside updateTask method')
 
 	try {
 		const response = await fetch('task/updateTask', {
