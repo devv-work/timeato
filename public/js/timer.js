@@ -30,7 +30,7 @@ const timerObject = {
 	totalSessions: 0,
 	elapsedTime: 0,
 	sessionInfo: [],
-	date: formatDate(),
+	date: new Date.now(),
 };
 const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
@@ -180,18 +180,6 @@ function updateTimerObject() {
 	console.log({ location: 'timer.js', timerObject });
 }
 
-// Converts Date() to mm/dd/yyyy format
-function formatDate() {
-	const today = new Date();
-	const yyyy = today.getFullYear();
-	let mm = today.getMonth() + 1; // Months start at 0!
-	let dd = today.getDate();
-	if (dd < 10) dd = '0' + dd;
-	if (mm < 10) mm = '0' + mm;
-	const formattedToday = mm + '/' + dd + '/' + yyyy;
-	return formattedToday;
-}
-
 // retrieves the text inside the list item that was clicked on
 // and assigned that value to the takeName property of timerObject
 function setTagName(e) {
@@ -210,17 +198,10 @@ async function updateTask() {
 			method: 'put',
 			headers: { 'Content-type': 'application/json' },
 			body: JSON.stringify({
-
-				// TaskSchema: taskName
+				// passing timer properties to updateTask controller to update a users task in db
 				'taskName': timerObject.taskName,
-
-				// SessionSchema: date
 				'date': timerObject.date,
-
-				// CycleSchema: focusTime
 				'focusTime': timerObject.focusTime,
-
-				// CycleSchema: breakTime
 				'breakTime': timerObject.breakTime,
 			})
 		})
