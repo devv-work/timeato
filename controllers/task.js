@@ -85,7 +85,7 @@ module.exports = {
 
       // add date to uniqueDatesLoggedIn array and create a new set which will remove any duplicate values
       let { uniqueDatesLoggedIn } = user
-      uniqueDatesLoggedIn.push(req.body.date)
+      uniqueDatesLoggedIn.push(formatDate(new Date(req.body.date)))
       uniqueDatesLoggedIn = [...new Set(uniqueDatesLoggedIn)]
 
       // Save changes in db
