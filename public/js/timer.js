@@ -87,12 +87,11 @@ function handleTimer(duration) {
 	const intervalId = setInterval(function () {
 		// update elapsed time
 		timerObject.elapsedTime = timerObject.elapsedTime + 1;
-		console.table({ location: 'timer.js', elapsedTime: timerObject.elapsedTime });
+		console.table('elapsedTime', timerObject.elapsedTime);
 
 		// display timer and update task within db
 		[minutes, seconds] = calculateTimer(duration);
 		displayTimer(minutes, seconds);
-		updateTask();
 
 		if (--duration < 0) {
 			clearInterval(intervalId);
