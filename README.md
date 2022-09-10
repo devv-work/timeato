@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Timeato</h1>
-    <img width="500" alt="188342389-7fa669a1-e757-42da-b3c1-36146e0adacd" src="https://user-images.githubusercontent.com/77141303/188753629-4b6039e1-a8d6-4722-ade4-aa5419704969.png">
+    <img width="700" alt="188342389-7fa669a1-e757-42da-b3c1-36146e0adacd" src="https://user-images.githubusercontent.com/77141303/188753629-4b6039e1-a8d6-4722-ade4-aa5419704969.png">
 </div>
 
 
@@ -30,3 +30,9 @@ In config folder, create a `.env` file and add the following variables:
  - passport
  - passport-local
  - validator
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+Please visit <a href="https://github.com/devv-work/timeato/blob/main/CONTRIBUTING.md">`CONTRIBUTING.md`</a> to read about our guidelines before making a contribution to our project. Thank you!
