@@ -42,7 +42,7 @@ If you want to help us improve our API, please fork the repo and follow these st
 #### After feature is finished
 
 1. Click merge
-2. Make sure the PR says base:main <- base:timer
+2. Make sure the PR says base:test <- base:timer
 
 ### Where should I make my pull request to?
 
