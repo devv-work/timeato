@@ -11,8 +11,9 @@ Timeato is an open source pomodoro study buddy built in JavaScript. Our platform
 #### README.md Sections:
 - [Project Installation](#project-installation)
 - [Project Dependencies](#project-dependencies)
-- [How to contribute](#how-to-contribute)
-- [Report a bug](#report-a-bug)
+- [How to Contribute](#how-to-contribute)
+- [Report a Bug](#report-a-bug)
+- [Our Team](#our-team)
 
 ### Project Installation
 1. Fork our repository
@@ -39,14 +40,22 @@ Timeato is an open source pomodoro study buddy built in JavaScript. Our platform
  - passport-local
  - validator
 
-## How to contribute
+## How To Contribute
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 Please visit <a href="https://github.com/devv-work/timeato/blob/main/CONTRIBUTING.md">`CONTRIBUTING.md`</a> to read about our guidelines before making a contribution to our project. Thank you!
 
-## Report a bug
+## Report a Bug
 
 If you encounter a bug and/or have any suggestions for our team, please visit our [issues page](https://github.com/devv-work/timeato/issues) and create a new issue. If you wish to implement a feature on your own, please visit our <a href="https://github.com/devv-work/timeato/blob/main/CONTRIBUTING.md">Contributing Guidelines</a> and follow our requirements.
 
 If you have encountered a bug, please provide as much information as you can to help us replicate the issue on our own end. Depending on the issue, it may be useful to communicate your browser, screen width, and/or anything that relates to your specific encounter.
+
+#### Our Team
+- Brandon Schefstad - ![Twitter](https://twitter.com/BrandonSchefs ) - ![Linkedin](https://www.linkedin.com/in/brandon-schefstad/)
+- Melissa Escue - ![Twitter](https://twitter.com/mel54924853) - ![Linkedin](https://www.linkedin.com/in/melissaescue/)
+- Zephyr Pfeiffer - ![Twitter](https://twitter.com/zephyrpfeiffer) - ![Linkedin](https://www.linkedin.com/in/zephyrpfeiffer/)
+- Ingmar Soares - ![Twitter](https://twitter.com/krinsea) - ![Linkedin](https://www.linkedin.com/in/ingmar-manuel-soares-medina-175342240)
+- Nick Rooney - ![Twitter](https://twitter.com/NickRooney17) - ![Linkedin](https://www.linkedin.com/in/nicholasrrooney/)
+- Brian Schnee - ![Twitter](https://twitter.com/BrianSchneeDev) - ![Linkedin](https://www.linkedin.com/in/brian-schnee-dev/)
