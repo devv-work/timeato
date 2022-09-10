@@ -25,7 +25,7 @@ Contributions are what make the open source community such an amazing place to l
 
 ## Creating an Issue
 
-If you have any feature suggestions, encounter a bug, and/or have any suggestions for our team, please visit our [issues page](https://github.com/devv-work/timeato/issues) and create a new issue. If you wish to implement a feature on your own, please add yourself as an assignee to the issue you create, so that we can note your interest. When creating an issue, please attempt to outline in detail the topic of the issue, and a thorough description of what the issue attempts to solve. 
+If you encounter a bug and/or have any suggestions for our team, please visit our [issues page](https://github.com/devv-work/timeato/issues) and create a new issue. If you wish to implement a feature on your own, please add yourself as an assignee to the issue you create, so that we can note your interest. When creating an issue, please attempt to outline in detail the topic of the issue, and a thorough description of what the issue attempts to solve. 
 
 If you have encountered a bug, please provide as much information as you can to help us replicate the issue on our own end. Depending on the issue, it may be useful to communicate your browser, screen width, and/or anything that relates to your specific encounter.
 
