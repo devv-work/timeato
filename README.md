@@ -5,15 +5,15 @@
 
 
 ## Introduction
-Install all the dependencies or node packages used for development via Terminal
 
-`npm install`
-
-### Local Setup
-In config folder, create a `.env` file and add the following variables:
-
-- DB_STRING = `mongodb connection URI`.
-- SECRET_SESSION = `string secret to pass into express-session instance`.
+### Project Installation
+1. Fork our repository
+2. Navigate to a local directory where you would like the project to be cloned to
+3. Clone the repository to your local environment (`git clone <link here>`)
+4. Install all of our dependencies (`npm install` or `npm i`)
+5. Create a `.env` file and add the following variables:
+    - DB_STRING = `mongodb connection URI`.
+    - SECRET_SESSION = `string secret to pass into express-session instance`.
 
 ### Project Dependencies
 
