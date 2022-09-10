@@ -5,15 +5,21 @@
     <a href="https://timeato-production.up.railway.app/">timeato-production.up.railway.app/</a>
 </div>
 
-## Introduction
-Timeato is an open source pomodoro study buddy built in JavaScript. Our platform aims to provide users the ability to increase productivity while setting aside time to study and do work. Create an account and start tracking study session information. After we authenticate you as a user, we are able to track the amount of time you have spent studying each of your selected tasks. 
 
 #### README.md Sections:
+- [Introduction](#introduction)
 - [Project Installation](#project-installation)
 - [Project Dependencies](#project-dependencies)
 - [How to Contribute](#how-to-contribute)
 - [Report a Bug](#report-a-bug)
 - [Our Team](#our-team)
+
+## Introduction
+Timeato is an open source pomodoro study buddy built in JavaScript. Our platform aims to provide users the ability to increase productivity while setting aside time to study and do work. Create an account and start tracking study session information. After we authenticate you as a user, we are able to track the amount of time you have spent studying each of your selected tasks. 
+
+<div align="center">
+    <img width="1440" alt="188342389-7fa669a1-e757-42da-b3c1-36146e0adacd" src="https://user-images.githubusercontent.com/77141303/189505675-4f3a023f-2d40-44be-a53d-56ab1c336f4a.png">
+</div>
 
 ### Project Installation
 1. Fork our repository
