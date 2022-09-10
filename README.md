@@ -62,7 +62,7 @@ If you want to help us improve our API, please fork the repo and follow these st
 
 ### Things to add
 
--   Create a `.env` file and add the following as `key: value`
-    -   PORT: 2121 (can be any port example: 3000)
-    -   DB_STRING: `your database URI`
+-   Create a `.env` file and add the following as `key= value`
+    -   DB_STRING = `mongodb connection URI`
+    -   SECRET_SESSION = `string secret to pass into express-session instance`
     ***
