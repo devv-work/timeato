@@ -8,6 +8,12 @@
 ## Introduction
 Timeato is an open source pomodoro study buddy built in JavaScript. Our platform aims to provide users the ability to increase productivity while setting aside time to study and do work. Create an account and start tracking study session information. After we authenticate you as a user, we are able to track the amount of time you have spent studying each of your selected tasks. 
 
+#### README.md Sections:
+- [Project Installation](#project-installation)
+- [Project Dependencies](#project-dependencies)
+- [How to contribute](#how-to-contribute)
+- [Report a bug](#report-a-bug)
+
 ### Project Installation
 1. Fork our repository
 2. Navigate to a local directory where you would like the project to be cloned to
@@ -33,7 +39,7 @@ Timeato is an open source pomodoro study buddy built in JavaScript. Our platform
  - passport-local
  - validator
 
-## Contributing
+## How to contribute
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
