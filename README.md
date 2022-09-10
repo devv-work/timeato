@@ -52,7 +52,7 @@ If you encounter a bug and/or have any suggestions for our team, please visit ou
 
 If you have encountered a bug, please provide as much information as you can to help us replicate the issue on our own end. Depending on the issue, it may be useful to communicate your browser, screen width, and/or anything that relates to your specific encounter.
 
-#### Our Team
+## Our Team
 - Brandon Schefstad - ![Twitter](https://twitter.com/BrandonSchefs ) - ![Linkedin](https://www.linkedin.com/in/brandon-schefstad/)
 - Melissa Escue - ![Twitter](https://twitter.com/mel54924853) - ![Linkedin](https://www.linkedin.com/in/melissaescue/)
 - Zephyr Pfeiffer - ![Twitter](https://twitter.com/zephyrpfeiffer) - ![Linkedin](https://www.linkedin.com/in/zephyrpfeiffer/)
