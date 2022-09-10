@@ -10,11 +10,12 @@ Install all the dependencies or node packages used for development via Terminal
 `npm install`
 
 ### Local Setup
-In config folder, create a `.env` file and add the following as `key= value`
+In config folder, create a `.env` file and add the following variables:
 
-DB_STRING = `mongodb connection URI`, SECRET_SESSION = `string secret to pass into express-session instance`
+- DB_STRING = `mongodb connection URI`.
+- SECRET_SESSION = `string secret to pass into express-session instance`.
 
-### Packages/Dependencies used
+### Project Dependencies
 
  - bcrypt
  - connect-mongo
