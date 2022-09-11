@@ -59,9 +59,9 @@ If you encounter a bug and/or have any suggestions for our team, please visit ou
 If you have encountered a bug, please provide as much information as you can to help us replicate the issue on our own end. Depending on the issue, it may be useful to communicate your browser, screen width, and/or anything that relates to your specific encounter.
 
 ## Our Team
-- Brandon Schefstad - ![Twitter](https://twitter.com/BrandonSchefs ) - ![Linkedin](https://www.linkedin.com/in/brandon-schefstad/)
-- Melissa Escue - ![Twitter](https://twitter.com/mel54924853) - ![Linkedin](https://www.linkedin.com/in/melissaescue/)
-- Zephyr Pfeiffer - ![Twitter](https://twitter.com/zephyrpfeiffer) - ![Linkedin](https://www.linkedin.com/in/zephyrpfeiffer/)
-- Ingmar Soares - ![Twitter](https://twitter.com/krinsea) - ![Linkedin](https://www.linkedin.com/in/ingmar-manuel-soares-medina-175342240)
-- Nick Rooney - ![Twitter](https://twitter.com/NickRooney17) - ![Linkedin](https://www.linkedin.com/in/nicholasrrooney/)
-- Brian Schnee - ![Twitter](https://twitter.com/BrianSchneeDev) - ![Linkedin](https://www.linkedin.com/in/brian-schnee-dev/)
+- Brandon Schefstad - <a href="https://twitter.com/BrandonSchefs">Twitter</a> - <a href="https://www.linkedin.com/in/brandon-schefstad/">LinkedIn</a>
+- Melissa Escue - <a href="https://twitter.com/mel54924853">Twitter</a> - <a href="https://www.linkedin.com/in/melissaescue/">LinkedIn</a>
+- Zephyr Pfeiffer - <a href="https://twitter.com/zephyrpfeiffer">Twitter</a> - <a href="https://www.linkedin.com/in/zephyrpfeiffer/">LinkedIn</a>
+- Ingmar Soares - <a href="https://twitter.com/krinsea">Twitter</a> - <a href="https://www.linkedin.com/in/ingmar-manuel-soares-medina-175342240">LinkedIn</a>
+- Nick Rooney - <a href="https://twitter.com/NickRooney17">Twitter</a> - <a href="https://www.linkedin.com/in/nicholasrrooney/">LinkedIn</a>
+- Brian Schnee - <a href="https://twitter.com/BrianSchneeDev">Twitter</a> - <a href="https://www.linkedin.com/in/brian-schnee-dev/">LinkedIn</a>
