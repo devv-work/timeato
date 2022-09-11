@@ -32,7 +32,7 @@ Timeato is an open source pomodoro study buddy built in JavaScript. Our platform
 
 ### Project Dependencies
 
- - bcrypt: used to ecrypt user password information.
+ - bcrypt - used to ecrypt user password information.
  - connect-mongo - used for creating connection to mongodb database.
  - dotenv, ejs - used to store express session secret value and DB string.
  - express - used for routing and handling request / response operations.
