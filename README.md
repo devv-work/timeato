@@ -32,19 +32,19 @@ Timeato is an open source pomodoro study buddy built in JavaScript. Our platform
 
 ### Project Dependencies
 
- - bcrypt
- - connect-mongo
- - dotenv, ejs
- - express
- - express-flash
- - express-session
- - mongodb
- - mongoose
- - morgan
- - nodemon
- - passport
- - passport-local
- - validator
+ - bcrypt: used to ecrypt user password information.
+ - connect-mongo - used for creating connection to mongodb database.
+ - dotenv, ejs - used to store express session secret value and DB string.
+ - express - used for routing and handling request / response operations.
+ - express-flash - used to display error information to user when logging or signing up.
+ - express-session - used to maintain user state (such as if they are currently logged in or not).
+ - mongodb - database used to store web application data.
+ - mongoose - used for creating models and schemas for storing data properly.
+ - morgan - used for displaying request information in testing environment.
+ - nodemon - used for testing and speeding up development process.
+ - passport - used for user authentication.
+ - passport-local - passport strategy used.
+ - validator - used for validating user input.
 
 ## How To Contribute
 
