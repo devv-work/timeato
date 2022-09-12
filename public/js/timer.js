@@ -103,28 +103,33 @@ function handleTimer(duration) {
 			updateTimerObject();
 		}
 		if (timerObject.active === false) {
+			changebuttonColor('white')
 			clearInterval(intervalId);
-			favIcon.href = './assets/favicon.jpg';
+		}
+	}, 1000); // <- Interval in ms
+	changebuttonColor('red')
+}
+
+
+function changebuttonColor(color){
+	if (color === 'white'){
+	favIcon.href = './assets/favicon.jpg';
 			timerStartStopBtn.style.backgroundColor = 'white'
 			timerStartStopBtn.style.boxShadow = '0 0.35rem #bbbbbb'
 			timerStartStopBtn.style.color = 'black'
 			timerStartStopBtn.classList.add('timerStartStopStopped')
 			timerStartStopBtn.classList.remove('timerStartStopStarted')
-
-
-
-
+		} else {
+			console.log({ location: 'timer.js', faviconhref: favIcon.href });
+			favIcon.href = './assets/favicon-timerstarted.jpg';
+			timerStartStopBtn.style.backgroundColor = '#ea5559'
+			timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
+			timerStartStopBtn.style.color = 'white'
+			timerStartStopBtn.classList.add('timerStartStopStarted')
+			timerStartStopBtn.classList.remove('timerStartStopStopped')
 		}
-	}, 1000); // <- Interval in ms
-	console.log({ location: 'timer.js', faviconhref: favIcon.href });
-	favIcon.href = './assets/favicon-timerstarted.jpg';
-	timerStartStopBtn.style.backgroundColor = '#ea5559'
-	timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
-	timerStartStopBtn.style.color = 'white'
-	timerStartStopBtn.classList.add('timerStartStopStarted')
-	timerStartStopBtn.classList.remove('timerStartStopStopped')
-
 }
+
 
 /**
  * Name: calculateTimer
