@@ -8,14 +8,15 @@ const listItems = document.querySelectorAll('.pomodoro__list-item');
 // Events
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 timeSelect.addEventListener('change', setTime);
-timeSelect.addEventListener('change', stopTimer);
-
+timeSelect.addEventListener('change', resetTimer);
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
-
 });
+
+// Declares intervalId globally, allowing for handleTimer to start and stop without a delay via clearInterval()
+let intervalId
 
 let [minutes, seconds] = calculateTimer(1500);
 displayTimer(minutes, seconds);
@@ -32,6 +33,7 @@ const timerObject = {
 	sessionInfo: [],
 	date: new Date(),
 };
+
 const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
 	timerObject.focusTime = parseInt(
@@ -63,24 +65,13 @@ function handleStartButtonClick() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
 	);
-	// timerObject.taskName = document.querySelector('#taskName').value;
 	duration = 60 * (timerObject.focusTime - timerObject.elapsedTime / 60);
 	if (duration < 0) {
 		setTime();
 	}
-
 	// update task in db
 	updateTask()
-
-	if (timerObject.active === false) {
-		console.log('Starting Timer');
-		handleTimer(duration);
-		timerObject.active = true;
-	} else {
-		console.log('Stopping Timer');
-		handleTimer(duration, false);
-		timerObject.active = false;
-	}
+	handleTimer(duration);
 }
 
 /**
@@ -88,28 +79,48 @@ function handleStartButtonClick() {
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
-function handleTimer(duration) {
-	const intervalId = setInterval(function () {
-		// update elapsed time
-		timerObject.elapsedTime = timerObject.elapsedTime + 1;
-		console.table('elapsedTime', timerObject.elapsedTime);
 
-		// display timer and update task within db
-		[minutes, seconds] = calculateTimer(duration);
-		displayTimer(minutes, seconds);
+async function handleTimer(duration) {
+	// Toggle active state
+  timerObject.active = !timerObject.active; 
+	console.log(timerObject.active)
 
-		if (--duration < 0) {
-			clearInterval(intervalId);
-			updateTimerObject();
+	if(timerObject.active){
+		changebuttonColor('red')
+		function handleCountdown () {
+			intervalId = setTimeout(handleCountdown,1000)
+			console.log(intervalId)
+			if(!timerObject.active) {
+				clearInterval(intervalId);
+			}
+			timerObject.elapsedTime = timerObject.elapsedTime + 1;
+			[minutes, seconds] = calculateTimer(duration);
+			displayTimer(minutes, seconds);
+			if (--duration < 0) {
+				changebuttonColor('white');
+				clearInterval(intervalId);
+				displayTimer('00', '00');
+				updateTimerObject();
+			}
+			if(timerObject.reset === true){
+				clearInterval(intervalId)
+				updateTimerObject();
+				setTime()
+				timerObject.reset = false
+				changebuttonColor('white');
+			}
 		}
-		if (timerObject.active === false) {
-			changebuttonColor('white')
-			clearInterval(intervalId);
-		}
-	}, 1000); // <- Interval in ms
-	changebuttonColor('red')
+		handleCountdown()
+	} else {
+		changebuttonColor('white');
+		clearInterval(intervalId)
+  }
 }
 
+function resetTimer(){
+	timerObject.reset = true
+	console.log('resetting')
+} 
 
 function changebuttonColor(color){
 	if (color === 'white'){
@@ -120,7 +131,7 @@ function changebuttonColor(color){
 			timerStartStopBtn.classList.add('timerStartStopStopped')
 			timerStartStopBtn.classList.remove('timerStartStopStarted')
 		} else {
-			console.log({ location: 'timer.js', faviconhref: favIcon.href });
+			// console.log({ location: 'timer.js', faviconhref: favIcon.href });
 			favIcon.href = './assets/favicon-timerstarted.jpg';
 			timerStartStopBtn.style.backgroundColor = '#ea5559'
 			timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
@@ -157,9 +168,7 @@ function displayTimer(minutes, seconds) {
 }
 
 // Stops the timer.
-function stopTimer(intervalId) {
-	clearInterval(intervalId);
-}
+
 
 /**
  * Name: displayTimer
