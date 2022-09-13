@@ -65,11 +65,15 @@ module.exports = {
           todaysFocusTime += req.body.focusTime
           todaysBreakTime += req.body.breakTime
 
-          // push the current session info
-          sessionInfo.push({
-            focusTime: req.body.focusTime, breakTime: req.body.breakTime
-          })
-
+          // push the current session info only if session just started (prevents duplicate pushes)
+          console.log(sessionInfo)
+          if (req.body.elapsedTime === 0 ){
+            sessionInfo.push({
+              focusTime: req.body.focusTime, breakTime: req.body.breakTime
+            })
+            console.log(sessionInfo)
+          }
+         
         } else { // add a new session
           // push a new session to session array
           sessions.push({
