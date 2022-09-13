@@ -5,19 +5,32 @@ const timeSelect = document.querySelector('#timeSelect');
 const title = document.querySelector('.pomodoro__title')
 const listItems = document.querySelectorAll('.pomodoro__list-item');
 
-// Events
-timerStartStopBtn.addEventListener('click', handleStartButtonClick);
-timeSelect.addEventListener('change', setTime);
-timeSelect.addEventListener('change', resetTimer);
+// Sounds
+const startSound = new Audio('../assets/sounds/high-pitched-click.wav')
+const stopSound =  new Audio('../assets/sounds/wood-block.mp3')
+const endSound = new Audio('../assets/sounds/software.wav')
 
-// adds event listeners to all items in the pomodoro__list
+// Events
+timerStartStopBtn.addEventListener('click', () =>{
+	console.log(timerObject)
+	timerObject.active ? stopSound.play() : startSound.play()
+	handleStartButtonClick()
+});
+timeSelect.addEventListener('change', () => {
+	resetTimer();
+	setTime();
+	console.log(timerObject)
+})
+
 listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
 });
 
+
 // Declares intervalId globally, allowing for handleTimer to start and stop without a delay via clearInterval()
 let intervalId
 
+// Defaults
 let [minutes, seconds] = calculateTimer(1500);
 displayTimer(minutes, seconds);
 let duration = 1500;
@@ -80,46 +93,45 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 
-async function handleTimer(duration) {
+function handleTimer(duration) {
 	// Toggle active state
   timerObject.active = !timerObject.active; 
 	console.log(timerObject.active)
-
 	if(timerObject.active){
 		changebuttonColor('red')
-		function handleCountdown () {
-			intervalId = setTimeout(handleCountdown,1000)
-			console.log(intervalId)
-			if(!timerObject.active) {
-				clearInterval(intervalId);
-			}
-			timerObject.elapsedTime = timerObject.elapsedTime + 1;
-			[minutes, seconds] = calculateTimer(duration);
-			displayTimer(minutes, seconds);
-			if (--duration < 0) {
-				changebuttonColor('white');
-				clearInterval(intervalId);
-				displayTimer('00', '00');
-				updateTimerObject();
-			}
-			if(timerObject.reset === true){
-				clearInterval(intervalId)
-				updateTimerObject();
-				setTime()
-				timerObject.reset = false
-				changebuttonColor('white');
-			}
-		}
 		handleCountdown()
 	} else {
 		changebuttonColor('white');
 		clearInterval(intervalId)
+		console.log('in else')
   }
 }
 
+function handleCountdown () {
+	intervalId = setTimeout(handleCountdown,10)
+	if(!timerObject.active) {
+		clearInterval(intervalId);
+	}
+	timerObject.elapsedTime = timerObject.elapsedTime + 1;
+	[minutes, seconds] = calculateTimer(duration);
+	displayTimer(minutes, seconds);
+	if (--duration < 0) {
+		changebuttonColor('white');
+		clearInterval(intervalId);
+		displayTimer('00', '00');
+		updateTimerObject();
+	}
+}
+
 function resetTimer(){
-	timerObject.reset = true
-	console.log('resetting')
+		clearInterval(intervalId)
+		updateTimerObject();
+		updateTask()
+		setTime()
+		changebuttonColor('white');
+		timerObject.active = false
+		timerObject.elapsedTime = 0
+	console.log(timerObject.active + 'line 136')
 } 
 
 function changebuttonColor(color){
@@ -167,9 +179,6 @@ function displayTimer(minutes, seconds) {
 	display.innerText = minutes + ':' + seconds;
 }
 
-// Stops the timer.
-
-
 /**
  * Name: displayTimer
  * Description: // Adds information from most recent session to TimerObject
@@ -206,7 +215,6 @@ function setTagName(e) {
 // Send the timer object to the addTask controller through a json
 async function updateTask() {
 	console.log('inside updateTask method')
-
 	try {
 		const response = await fetch('task/updateTask', {
 			method: 'put',
@@ -217,6 +225,7 @@ async function updateTask() {
 				'date': timerObject.date,
 				'focusTime': timerObject.focusTime,
 				'breakTime': timerObject.breakTime,
+				'elapsedTime': timerObject.elapsedTime,
 			})
 		})
 		const data = await response.json()
