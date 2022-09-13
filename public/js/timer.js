@@ -85,10 +85,7 @@ async function handleTimer(duration) {
   timerObject.active = !timerObject.active; 
 	console.log(timerObject.active)
 
-	if(!timerObject.active){
-		changebuttonColor('white');
-		clearInterval(intervalId)
-	} else {
+	if(timerObject.active){
 		changebuttonColor('red')
 		function handleCountdown () {
 			intervalId = setTimeout(handleCountdown,1000)
@@ -114,6 +111,9 @@ async function handleTimer(duration) {
 			}
 		}
 		handleCountdown()
+	} else {
+		changebuttonColor('white');
+		clearInterval(intervalId)
   }
 }
 
