@@ -10,16 +10,13 @@ timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 timeSelect.addEventListener('change', setTime);
 timeSelect.addEventListener('change', resetTimer);
 
-function resetTimer(){
-	timerObject.reset = true
-	console.log('resetting')
-}
-
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
 	listItem.addEventListener('click', setTagName);
-
 });
+
+// Declares intervalId globally, allowing for handleTimer to start and stop without a delay via clearInterval()
+let intervalId
 
 let [minutes, seconds] = calculateTimer(1500);
 displayTimer(minutes, seconds);
@@ -46,8 +43,6 @@ function setTime() {
 	const [minutes, seconds] = calculateTimer(duration);
 	displayTimer(minutes, seconds);
 }
-
-
 
 function setTime() {
 	timerObject.focusTime = parseInt(
@@ -77,11 +72,14 @@ function handleStartButtonClick() {
 	updateTask()
 	handleTimer(duration);
 }
+
 /**
  * Name: handleTimer
  * Description: Run's setTimeout interval and displays time changes to DOM
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
+
+
 
 async function handleTimer(duration) {
 	// Toggle active state
@@ -90,14 +88,19 @@ async function handleTimer(duration) {
 
 	if(!timerObject.active){
 		changebuttonColor('white');
+		clearInterval(intervalId)
 	}
 
   if(timerObject.active) {
 		changebuttonColor('red')
 		function handleCountdown () {
-			const intervalId = setTimeout(handleCountdown,1000)
+			intervalId = setTimeout(handleCountdown,1000)
+			console.log(intervalId)
+			if(!timerObject.active) {
+				clearInterval(intervalId);
+			}
 			timerObject.elapsedTime = timerObject.elapsedTime + 1;
-			[minutes, seconds] = calculateTimer(duration-1);
+			[minutes, seconds] = calculateTimer(duration);
 			displayTimer(minutes, seconds);
 			if (--duration < 0) {
 				changebuttonColor('white');
@@ -105,9 +108,7 @@ async function handleTimer(duration) {
 				displayTimer('00', '00');
 				updateTimerObject();
 			}
-			if(!timerObject.active) {
-				clearInterval(intervalId);
-			}
+
 			if(timerObject.reset === true){
 				clearInterval(intervalId)
 				updateTimerObject();
@@ -120,6 +121,11 @@ async function handleTimer(duration) {
 		handleCountdown()
   }
 }
+
+function resetTimer(){
+	timerObject.reset = true
+	console.log('resetting')
+} 
 
 function changebuttonColor(color){
 	if (color === 'white'){
