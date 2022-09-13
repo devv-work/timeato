@@ -108,7 +108,7 @@ function handleTimer(duration) {
 }
 
 function handleCountdown () {
-	intervalId = setTimeout(handleCountdown,1000)
+	intervalId = setTimeout(handleCountdown,10)
 	if(!timerObject.active) {
 		clearInterval(intervalId);
 	}
@@ -126,9 +126,11 @@ function handleCountdown () {
 function resetTimer(){
 		clearInterval(intervalId)
 		updateTimerObject();
+		updateTask()
 		setTime()
 		changebuttonColor('white');
 		timerObject.active = false
+		timerObject.elapsedTime = 0
 	console.log(timerObject.active + 'line 136')
 } 
 
@@ -223,6 +225,7 @@ async function updateTask() {
 				'date': timerObject.date,
 				'focusTime': timerObject.focusTime,
 				'breakTime': timerObject.breakTime,
+				'elapsedTime': timerObject.elapsedTime,
 			})
 		})
 		const data = await response.json()
