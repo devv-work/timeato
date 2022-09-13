@@ -8,8 +8,12 @@ const listItems = document.querySelectorAll('.pomodoro__list-item');
 // Events
 timerStartStopBtn.addEventListener('click', handleStartButtonClick);
 timeSelect.addEventListener('change', setTime);
-timeSelect.addEventListener('change', stopTimer);
+timeSelect.addEventListener('change', resetTimer);
 
+function resetTimer(){
+	timerObject.reset = true
+	console.log('resetting')
+}
 
 // adds event listeners to all items in the pomodoro__list
 listItems.forEach((listItem) => {
@@ -43,6 +47,8 @@ function setTime() {
 	displayTimer(minutes, seconds);
 }
 
+
+
 function setTime() {
 	timerObject.focusTime = parseInt(
 		document.querySelector('#timeSelect').value
@@ -69,14 +75,8 @@ function handleStartButtonClick() {
 	}
 	// update task in db
 	updateTask()
-	// * Remove conditional
-	if (timerObject.active === false) {
-		handleTimer(duration);
-	} else {
-		handleTimer(duration);
-	}
+	handleTimer(duration);
 }
-
 /**
  * Name: handleTimer
  * Description: Run's setTimeout interval and displays time changes to DOM
@@ -95,17 +95,26 @@ async function handleTimer(duration) {
   if(timerObject.active) {
 		changebuttonColor('red')
 		function handleCountdown () {
-			const intervalId = setTimeout(handleCountdown,10)
+			const intervalId = setTimeout(handleCountdown,1000)
 			timerObject.elapsedTime = timerObject.elapsedTime + 1;
 			[minutes, seconds] = calculateTimer(duration-1);
 			displayTimer(minutes, seconds);
 			if (--duration < 0) {
+				changebuttonColor('white');
 				clearInterval(intervalId);
 				displayTimer('00', '00');
 				updateTimerObject();
 			}
 			if(!timerObject.active) {
 				clearInterval(intervalId);
+			}
+			if(timerObject.reset === true){
+				clearInterval(intervalId)
+				updateTimerObject();
+				setTime()
+				timerObject.reset = false
+				changebuttonColor('white');
+
 			}
 		}
 		handleCountdown()
