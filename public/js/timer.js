@@ -33,6 +33,7 @@ const timerObject = {
 	sessionInfo: [],
 	date: new Date(),
 };
+
 const favIcon = document.getElementsByTagName('link')[2];
 function setTime() {
 	timerObject.focusTime = parseInt(
@@ -79,8 +80,6 @@ function handleStartButtonClick() {
  * @param duration - specifies the amount of time for each setTimeout iteration
  */
 
-
-
 async function handleTimer(duration) {
 	// Toggle active state
   timerObject.active = !timerObject.active; 
@@ -89,9 +88,7 @@ async function handleTimer(duration) {
 	if(!timerObject.active){
 		changebuttonColor('white');
 		clearInterval(intervalId)
-	}
-
-  if(timerObject.active) {
+	} else {
 		changebuttonColor('red')
 		function handleCountdown () {
 			intervalId = setTimeout(handleCountdown,1000)
@@ -108,14 +105,12 @@ async function handleTimer(duration) {
 				displayTimer('00', '00');
 				updateTimerObject();
 			}
-
 			if(timerObject.reset === true){
 				clearInterval(intervalId)
 				updateTimerObject();
 				setTime()
 				timerObject.reset = false
 				changebuttonColor('white');
-
 			}
 		}
 		handleCountdown()
