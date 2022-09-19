@@ -7,11 +7,11 @@ const listItems = document.querySelectorAll('.pomodoro__list-item');
 
 // Sounds
 const startSound = new Audio('../assets/sounds/high-pitched-click.wav')
-const stopSound =  new Audio('../assets/sounds/wood-block.mp3')
+const stopSound = new Audio('../assets/sounds/wood-block.mp3')
 const endSound = new Audio('../assets/sounds/software.wav')
 
 // Events
-timerStartStopBtn.addEventListener('click', () =>{
+timerStartStopBtn.addEventListener('click', () => {
 	console.log(timerObject)
 	timerObject.active ? stopSound.play() : startSound.play()
 	handleStartButtonClick()
@@ -95,21 +95,21 @@ function handleStartButtonClick() {
 
 function handleTimer(duration) {
 	// Toggle active state
-  timerObject.active = !timerObject.active; 
+	timerObject.active = !timerObject.active;
 	console.log(timerObject.active)
-	if(timerObject.active){
+	if (timerObject.active) {
 		changebuttonColor('red')
 		handleCountdown()
 	} else {
 		changebuttonColor('white');
 		clearInterval(intervalId)
 		console.log('in else')
-  }
+	}
 }
 
-function handleCountdown () {
-	intervalId = setTimeout(handleCountdown,10)
-	if(!timerObject.active) {
+function handleCountdown() {
+	intervalId = setTimeout(handleCountdown, 1000)
+	if (!timerObject.active) {
 		clearInterval(intervalId);
 	}
 	timerObject.elapsedTime = timerObject.elapsedTime + 1;
@@ -123,34 +123,34 @@ function handleCountdown () {
 	}
 }
 
-function resetTimer(){
-		clearInterval(intervalId)
-		updateTimerObject();
-		updateTask()
-		setTime()
-		changebuttonColor('white');
-		timerObject.active = false
-		timerObject.elapsedTime = 0
+function resetTimer() {
+	clearInterval(intervalId)
+	updateTimerObject();
+	updateTask()
+	setTime()
+	changebuttonColor('white');
+	timerObject.active = false
+	timerObject.elapsedTime = 0
 	console.log(timerObject.active + 'line 136')
-} 
+}
 
-function changebuttonColor(color){
-	if (color === 'white'){
-	favIcon.href = './assets/favicon.jpg';
-			timerStartStopBtn.style.backgroundColor = 'white'
-			timerStartStopBtn.style.boxShadow = '0 0.35rem #bbbbbb'
-			timerStartStopBtn.style.color = 'black'
-			timerStartStopBtn.classList.add('timerStartStopStopped')
-			timerStartStopBtn.classList.remove('timerStartStopStarted')
-		} else {
-			// console.log({ location: 'timer.js', faviconhref: favIcon.href });
-			favIcon.href = './assets/favicon-timerstarted.jpg';
-			timerStartStopBtn.style.backgroundColor = '#ea5559'
-			timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
-			timerStartStopBtn.style.color = 'white'
-			timerStartStopBtn.classList.add('timerStartStopStarted')
-			timerStartStopBtn.classList.remove('timerStartStopStopped')
-		}
+function changebuttonColor(color) {
+	if (color === 'white') {
+		favIcon.href = './assets/favicon.jpg';
+		timerStartStopBtn.style.backgroundColor = 'white'
+		timerStartStopBtn.style.boxShadow = '0 0.35rem #bbbbbb'
+		timerStartStopBtn.style.color = 'black'
+		timerStartStopBtn.classList.add('timerStartStopStopped')
+		timerStartStopBtn.classList.remove('timerStartStopStarted')
+	} else {
+		// console.log({ location: 'timer.js', faviconhref: favIcon.href });
+		favIcon.href = './assets/favicon-timerstarted.jpg';
+		timerStartStopBtn.style.backgroundColor = '#ea5559'
+		timerStartStopBtn.style.boxShadow = '0 0.35rem #9b3034'
+		timerStartStopBtn.style.color = 'white'
+		timerStartStopBtn.classList.add('timerStartStopStarted')
+		timerStartStopBtn.classList.remove('timerStartStopStopped')
+	}
 }
 
 
