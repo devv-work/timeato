@@ -2,7 +2,7 @@
     <img width="150px" src="https://user-images.githubusercontent.com/77141303/189505187-cdd05b52-c769-4595-9c33-3238c94b963f.png" />
     <h1>Timeato</h1>
     <p>A pomodoro app that allows you to track your study sessions</p>
-    <a href="https://timeato-production.up.railway.app/">timeato-production.up.railway.app/</a>
+    <a href="https://timeato.up.railway.app/">timeato.up.railway.app/</a>
 </div>
 
 
