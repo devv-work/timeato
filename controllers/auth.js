@@ -14,6 +14,14 @@ exports.getLogin = (req, res) => {
 }
 
 exports.postLogin = (req, res, next) => {
+  // if query parameter is passed to post login, attach demo credentials to req.body
+  if (req.query) {
+    req.body = {
+      email: process.env.DEMO_EMAIL,
+      password: process.env.DEMO_PASSWORD
+    }
+  }
+
   const validationErrors = []
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
   if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
