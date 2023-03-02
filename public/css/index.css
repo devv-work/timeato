@@ -77,6 +77,10 @@ body {
     box-shadow: 0 .7rem #bbbbbb;
 }
 
+#demo {
+    display: inline-block;
+}
+
 @media all and (max-width: 1375px) {
     html {
         font-size: 50%;
