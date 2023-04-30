@@ -8,9 +8,9 @@
 
 #### README.md Sections:
 - [Introduction](#introduction)
-- [Project Installation](#project-installation)
-- [Project Dependencies](#project-dependencies)
-- [How to Contribute](#how-to-contribute)
+  - [Project Installation](#project-installation)
+  - [Project Dependencies](#project-dependencies)
+- [How To Contribute](#how-to-contribute)
 - [Report a Bug](#report-a-bug)
 - [Our Team](#our-team)
 
@@ -65,4 +65,4 @@ If you have encountered a bug, please provide as much information as you can to 
 - Zephyr Pfeiffer - <a href="https://twitter.com/zephyrpfeiffer">Twitter</a> - <a href="https://www.linkedin.com/in/zephyrpfeiffer/">LinkedIn</a>
 - Ingmar Soares - <a href="https://twitter.com/krinsea">Twitter</a> - <a href="https://www.linkedin.com/in/ingmar-manuel-soares-medina-175342240">LinkedIn</a>
 - Nick Rooney - <a href="https://twitter.com/NickRooney17">Twitter</a> - <a href="https://www.linkedin.com/in/nicholasrrooney/">LinkedIn</a>
-- Brian Schnee - <a href="https://twitter.com/BrianSchneeDev">Twitter</a> - <a href="https://www.linkedin.com/in/brian-schnee-dev/">LinkedIn</a>
+- Brian Schnee - <a href="https://twitter.com/fullstackbrian">Twitter</a> - <a href="https://www.linkedin.com/in/brian-schnee-dev/">LinkedIn</a>
